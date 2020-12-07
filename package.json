@@ -15,9 +15,10 @@
     "format": "prettier src --write",
     "prepublishOnly": "yarn build",
     "start": "webpack serve",
-    "test:units": "jest --watch --no-cache",
+    "test:units": "jest --no-cache",
     "test:integration": "yarn build && yarn cypress run",
     "test:cov": "jest --coverage",
+    "test:watch": "jest --watch --no-cache",
     "test": "yarn test:units && yarn test:integration"
   },
   "repository": "git@github.com:DePayFi/react-dialog.git",
