@@ -1,9 +1,22 @@
-/coverage
-/es
-/lib
+# Dependencies
 /node_modules
-/umd
-npm-debug.log*
-yarn-error.log
+
+# Jest
+/coverage
+
+# Cypress
 /tests/videos
 /tests/screenshots
+
+# IDE - VSCode
+.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Various
+npm-debug.log*
+yarn-error.log

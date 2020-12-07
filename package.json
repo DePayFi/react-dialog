@@ -1,5 +1,5 @@
 {
-  "name": "react-dialog",
+  "name": "depay-react-dialog",
   "version": "1.0.0",
   "description": "A basic dialog component for react.",
   "main": "./dist/index.js",
@@ -28,9 +28,9 @@
   "author": "depay.fi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/depayfi/react-dialog/issues"
+    "url": "https://github.com/DePayFi/react-dialog/issues"
   },
-  "homepage": "https://github.com/depayfi/react-dialog#readme",
+  "homepage": "https://github.com/DePayFi/react-dialog#readme",
   "private": false,
   "dependencies": {},
   "peerDependencies": {
@@ -67,6 +67,7 @@
     "jest": "^26.6.3",
     "jest-dom": "^4.0.0",
     "prettier": "^2.2.1",
+    "react": "^17.0.1",
     "react-test-renderer": "^17.0.1",
     "react-testing-library": "^8.0.1",
     "rollup": "^2.34.2",
