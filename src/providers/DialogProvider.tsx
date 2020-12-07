@@ -10,7 +10,7 @@ class DialogProvider extends React.Component<DialogProviderProps> {
     closable: true,
   }
 
-  setClosable(closable: Boolean) {
+  setClosable(closable: boolean) {
     this.setState({
       closable,
     })
