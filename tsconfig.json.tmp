@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "lib": ["es5", "es6", "es7", "es2017", "dom"],
+    "sourceMap": true,
+    "types": ["cypress"],
+    "target": "es5",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "rootDirs": ["src"],
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "include": ["src/**/*"],
+    "exclude": [
+      "node_modules"
+    ]
+  }
+}

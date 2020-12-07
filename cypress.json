@@ -1,5 +1,9 @@
-{  
-  "experimentalComponentTesting": true,
-  "componentFolder": "cypress/component",
-  "testFiles": "**/*.spec.*"
+{
+  "testFiles": "**/*.*",
+  "integrationFolder": "./tests/integration",
+  "fixturesFolder": ".tests/fixtures",
+  "pluginsFile": ".tests/cypress.plugins.js",
+  "supportFile": ".tests/cypress.support.js",
+  "videosFolder": ".tests/videos",
+  "screenshotsFolder": ".tests/screenshots"
 }
