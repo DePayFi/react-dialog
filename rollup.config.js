@@ -7,20 +7,18 @@ export default {
     {
       file: pkg.main,
       format: 'cjs',
+      file: 'dist/cjs/index.js'
     },
     {
       file: pkg.module,
       format: 'es',
+      file: 'dist/es/index.js'
     },
     {
       file: pkg.module,
       format: 'umd',
-      name: pkg.moduleName
-    },
-    {
-      file: './dist/demo.js',
-      format: 'umd',
-      name: 'Demo'
+      name: pkg.moduleName,
+      file: 'dist/umd/index.js'
     },
   ],
   external: [
@@ -31,5 +29,5 @@ export default {
     typescript({
       typescript: require('typescript'),
     }),
-  ],
+  ]
 }

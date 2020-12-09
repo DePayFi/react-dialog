@@ -1,3 +1,7 @@
 import Dialog from './components/Dialog'
 
-export { Dialog }
+const render = function(){
+  console.log('render 6');
+}
+
+export { Dialog, render }
