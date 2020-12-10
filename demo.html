@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="https://depay.fi/favicon.png"/>
     <title>Demo</title>
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="dist/umd/index.js"></script>
-    <script>
-      const { render } = window.DePayReactDialog;
-      render();
-    </script>
   </head>
   <body>
+    <div id="dialog"></div>
+    <script>
+      const { render } = window.DePayReactDialog;
+
+      render(
+        document.getElementById('dialog'),
+        React.createElement('h1', {}, 'I am a dialog!')
+      );
+    </script>
   </body>
 </html>

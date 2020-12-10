@@ -5,10 +5,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
+var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
 class Dialog extends React__default['default'].Component {
     render() {
@@ -16,8 +18,9 @@ class Dialog extends React__default['default'].Component {
     }
 }
 
-const render = function () {
-    console.log('render 6');
+const render = function (container, content) {
+    console.log(content);
+    return ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), container);
 };
 
 exports.Dialog = Dialog;
