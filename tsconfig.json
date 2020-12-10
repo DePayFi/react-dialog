@@ -15,7 +15,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "es6",
-    "types": ["cypress"]
+    "types": ["cypress", "node"],
+    "noImplicitAny": false
   },
   "include": ["src/**/*"],
   "exclude": ["test", "node_modules", "dist"]

@@ -18,10 +18,31 @@ class Dialog extends React__default['default'].Component {
     }
 }
 
-const render = function (container, content) {
-    console.log(content);
-    return ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), container);
+const shadowContainerId = 'ReactDialogShadowContainer';
+function ShadowContainer() {
+    let container = document.getElementById(shadowContainerId);
+    if (container) {
+        ReactDOM__default['default'].unmountComponentAtNode(container);
+        container.remove();
+    }
+    container = document.createElement('div');
+    container.setAttribute('id', 'ReactDialogShadowContainer');
+    document.body.appendChild(container);
+    let shadow;
+    let insideContainer = document.createElement('div');
+    insideContainer.setAttribute('id', 'ReactDialogInsideContainer');
+    if (container.shadowRoot) {
+        shadow = container.shadowRoot;
+    }
+    else {
+        shadow = container.attachShadow({ mode: 'closed' });
+    }
+    shadow.appendChild(insideContainer);
+    return insideContainer;
+}
+
+const render = function (content) {
+    return ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), ShadowContainer());
 };
 
-exports.Dialog = Dialog;
 exports.render = render;

@@ -3,7 +3,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-dom')) :
   typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-dom'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.DePayReactDialog = {}, global.React, global.ReactDOM));
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ReactDialog = {}, global.React, global.ReactDOM));
 }(this, (function (exports, React, ReactDOM) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -17,12 +17,33 @@
       }
   }
 
-  const render = function (container, content) {
-      console.log(content);
-      return ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), container);
+  const shadowContainerId = 'ReactDialogShadowContainer';
+  function ShadowContainer() {
+      let container = document.getElementById(shadowContainerId);
+      if (container) {
+          ReactDOM__default['default'].unmountComponentAtNode(container);
+          container.remove();
+      }
+      container = document.createElement('div');
+      container.setAttribute('id', 'ReactDialogShadowContainer');
+      document.body.appendChild(container);
+      let shadow;
+      let insideContainer = document.createElement('div');
+      insideContainer.setAttribute('id', 'ReactDialogInsideContainer');
+      if (container.shadowRoot) {
+          shadow = container.shadowRoot;
+      }
+      else {
+          shadow = container.attachShadow({ mode: 'closed' });
+      }
+      shadow.appendChild(insideContainer);
+      return insideContainer;
+  }
+
+  const render = function (content) {
+      return ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), ShadowContainer());
   };
 
-  exports.Dialog = Dialog;
   exports.render = render;
 
   Object.defineProperty(exports, '__esModule', { value: true });

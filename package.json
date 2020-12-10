@@ -1,6 +1,6 @@
 {
   "name": "depay-react-dialog",
-  "moduleName": "DePayReactDialog",
+  "moduleName": "ReactDialog",
   "version": "1.0.0",
   "description": "A basic dialog component for react.",
   "main": "./dist/index.js",
@@ -36,8 +36,8 @@
   "private": false,
   "dependencies": {},
   "peerDependencies": {
-    "react": "^16 || ^17",
-    "react-dom": "^16 || ^17"
+    "react": "^17",
+    "react-dom": "^17"
   },
   "engines": {
     "node": ">=10"
@@ -46,6 +46,7 @@
     "@babel/core": "^7.12.9",
     "@babel/preset-env": "^7.12.7",
     "@babel/preset-react": "^7.12.7",
+    "@types/node": "^14.14.12",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.0",

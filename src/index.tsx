@@ -1,15 +1,15 @@
 import Dialog from './components/Dialog'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import ShadowContainer from './utils/ShadowContainer'
 
-const render = function(container: HTMLElement, content: HTMLElement){
-  console.log(content)
+const render = function(content: HTMLElement){
   return ReactDOM.render(
     <Dialog
       content={ content }
     />,
-    container
+    ShadowContainer()
   )
 }
 
-export { Dialog, render }
+export { render }
