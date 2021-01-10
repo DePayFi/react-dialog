@@ -1,1 +1,1 @@
-export default function ShadowContainer(): HTMLElement;
+export default function ShadowContainer(targetDocument: Document): HTMLElement;

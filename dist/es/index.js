@@ -10,30 +10,30 @@ class Dialog extends React.Component {
 }
 
 const shadowContainerId = 'ReactDialogShadowContainer';
-function ShadowContainer() {
-    let container = document.getElementById(shadowContainerId);
+function ShadowContainer(targetDocument) {
+    let container = targetDocument.getElementById(shadowContainerId);
     if (container) {
         ReactDOM.unmountComponentAtNode(container);
         container.remove();
     }
-    container = document.createElement('div');
+    container = targetDocument.createElement('div');
     container.setAttribute('id', 'ReactDialogShadowContainer');
-    document.body.appendChild(container);
+    targetDocument.body.appendChild(container);
     let shadow;
-    let insideContainer = document.createElement('div');
+    let insideContainer = targetDocument.createElement('div');
     insideContainer.setAttribute('id', 'ReactDialogInsideContainer');
     if (container.shadowRoot) {
         shadow = container.shadowRoot;
     }
     else {
-        shadow = container.attachShadow({ mode: 'closed' });
+        shadow = container.attachShadow({ mode: 'open' });
     }
     shadow.appendChild(insideContainer);
     return insideContainer;
 }
 
-const render = function (content) {
-    return ReactDOM.render(React.createElement(Dialog, { content: content }), ShadowContainer());
+const render = function (targetDocument, content) {
+    return ReactDOM.render(React.createElement(Dialog, { content: content }), ShadowContainer(targetDocument));
 };
 
 export { render };

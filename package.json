@@ -17,7 +17,7 @@
     "prepublishOnly": "yarn build",
     "start": "rollup -c rollup.serve.config.js -w",
     "test:units": "jest --no-cache",
-    "test:integration": "yarn build && yarn cypress run",
+    "test:integration": "yarn cypress run",
     "test:cov": "jest --coverage",
     "test:watch": "jest --watch --no-cache",
     "test": "yarn test:units && yarn test:integration"

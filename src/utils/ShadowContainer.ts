@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom'
 
 const shadowContainerId = 'ReactDialogShadowContainer'
 
-export default function ShadowContainer(targetDocument):HTMLElement {
+export default function ShadowContainer(targetDocument: Document):HTMLElement {
 
   let container = targetDocument.getElementById(shadowContainerId)
   if(container) { 
@@ -20,7 +20,7 @@ export default function ShadowContainer(targetDocument):HTMLElement {
   if(container.shadowRoot) {
     shadow = container.shadowRoot
   } else {
-    shadow = container.attachShadow({ mode: 'closed' })
+    shadow = container.attachShadow({ mode: 'open' })
   }
   shadow.appendChild(insideContainer)
   

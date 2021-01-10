@@ -3,12 +3,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ShadowContainer from './utils/ShadowContainer'
 
-const render = function(targetDocument: content: HTMLElement){
+const render = function(targetDocument: Document, content: HTMLElement){
   return ReactDOM.render(
     <Dialog
       content={ content }
     />,
-    ShadowContainer()
+    ShadowContainer(targetDocument)
   )
 }
 
