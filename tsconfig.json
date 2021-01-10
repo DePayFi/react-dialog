@@ -12,12 +12,12 @@
     "outDir": "dist",
     "removeComments": true,
     "resolveJsonModule": true,
+    "baseUrl": ".",
     "sourceMap": true,
     "strict": true,
     "target": "es6",
-    "types": ["cypress", "node"],
+    "types": ["node"],
     "noImplicitAny": false
   },
-  "include": ["src/**/*"],
-  "exclude": ["test", "node_modules", "dist"]
+  "include": ["src"]
 }

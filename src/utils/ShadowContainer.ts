@@ -2,20 +2,20 @@ import ReactDOM from 'react-dom'
 
 const shadowContainerId = 'ReactDialogShadowContainer'
 
-export default function ShadowContainer():HTMLElement {
+export default function ShadowContainer(targetDocument):HTMLElement {
 
-  let container = document.getElementById(shadowContainerId)
+  let container = targetDocument.getElementById(shadowContainerId)
   if(container) { 
     ReactDOM.unmountComponentAtNode(container)
     container.remove()
   }
 
-  container = document.createElement('div')
+  container = targetDocument.createElement('div')
   container.setAttribute('id', 'ReactDialogShadowContainer')
-  document.body.appendChild(container)
+  targetDocument.body.appendChild(container)
   
   let shadow
-  let insideContainer = document.createElement('div')
+  let insideContainer = targetDocument.createElement('div')
   insideContainer.setAttribute('id', 'ReactDialogInsideContainer')
   if(container.shadowRoot) {
     shadow = container.shadowRoot

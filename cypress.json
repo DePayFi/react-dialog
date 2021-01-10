@@ -1,9 +1,5 @@
 {
-  "testFiles": "**/*.*",
-  "integrationFolder": "./tests/integration",
-  "fixturesFolder": "./tests/fixtures",
-  "pluginsFile": "./tests/cypress.plugins.js",
-  "supportFile": "./tests/cypress.support.js",
-  "videosFolder": "./tests/videos",
-  "screenshotsFolder": "./tests/screenshots"
+  "pluginsFile": "cypress/plugins.js",
+  "supportFile": "cypress/support.js",
+  "fixturesFolder": false
 }

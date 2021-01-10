@@ -5,8 +5,8 @@
 /coverage
 
 # Cypress
-/tests/videos
-/tests/screenshots
+/cypress/videos
+/cypress/screenshots
 
 # IDE - VSCode
 .vscode
