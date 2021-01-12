@@ -2,7 +2,7 @@ import React from 'react'
 import DialogContext from '../contexts/DialogContext'
 
 interface DialogProviderProps {
-  closeContainer: () => any
+  closeContainer: () => void
 }
 
 class DialogProvider extends React.Component<DialogProviderProps> {
@@ -10,13 +10,13 @@ class DialogProvider extends React.Component<DialogProviderProps> {
     closable: true,
   }
 
-  setClosable(closable: boolean) {
+  setClosable(closable: boolean): void {
     this.setState({
       closable,
     })
   }
 
-  render() {
+  render(): React.ReactNode {
     return (
       <DialogContext.Provider
         value={{
