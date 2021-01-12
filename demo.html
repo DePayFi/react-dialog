@@ -13,10 +13,15 @@
     <script>
       const { render } = window.ReactDialog;
 
-      render(
+      render({
         document,
-        React.createElement('h1', {}, 'I am a dialog!')
-      );
+        content: React.createElement('h1', {}, 'I am a dialog!'),
+        styles: `
+          h1 {
+            color: red;
+          }
+        `
+      });
     </script>
   </body>
 </html>

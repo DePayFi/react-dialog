@@ -3,12 +3,25 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import ShadowContainer from './utils/ShadowContainer'
 
-const render = function(targetDocument: Document, content: HTMLElement){
+interface renderParamenters {
+  document: Document,
+  content: HTMLElement,
+  styles?: string
+}
+
+const render = function({
+  document,
+  content,
+  styles = ''
+}: renderParamenters){
   return ReactDOM.render(
     <Dialog
       content={ content }
     />,
-    ShadowContainer(targetDocument)
+    ShadowContainer({ 
+      document,
+      styles
+    })
   )
 }
 
