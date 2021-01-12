@@ -5,7 +5,6 @@ interface DialogProps {
 }
 
 class Dialog extends React.Component<DialogProps> {
-
   render(): React.ReactNode {
     return this.props.content
   }

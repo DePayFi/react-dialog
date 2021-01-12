@@ -4,12 +4,18 @@ const shadowContainerId = 'ReactDialogShadowContainer'
 const shadowContainerStyleId = 'ReactDialogShadowContainerStyles'
 
 function injectOutsideStyles(document: Document) {
-  if (document.querySelector(shadowContainerStyleId)) { return }
+  if (document.querySelector(shadowContainerStyleId)) {
+    return
+  }
   const style = document.createElement('style')
   style.type = 'text/css'
   style.setAttribute('id', shadowContainerStyleId)
-  style.appendChild(document.createTextNode(`
-    #`+shadowContainerId+` {
+  style.appendChild(
+    document.createTextNode(
+      `
+    #` +
+        shadowContainerId +
+        ` {
       background: rgba(0,0,0,0);
       bottom: 0;
       height: 100%;
@@ -23,12 +29,16 @@ function injectOutsideStyles(document: Document) {
       z-index: 99999;
     }
 
-    #`+shadowContainerId+`.open {
+    #` +
+        shadowContainerId +
+        `.open {
       background: rgba(0,0,0,0.4);
       opacity: 1;
       top: 0;
     }
-  `))
+  `,
+    ),
+  )
   document.getElementsByTagName('head')[0].appendChild(style)
 }
 
@@ -39,10 +49,10 @@ function injectInsideStyles(document: Document, shadow: HTMLElement, styles: str
   shadow.appendChild(style)
 }
 
-function createAndAppendContainer(document: Document):HTMLElement {
+function createAndAppendContainer(document: Document): HTMLElement {
   let container = document.getElementById(shadowContainerId)
-  
-  if(container) { 
+
+  if (container) {
     ReactDOM.unmountComponentAtNode(container)
     container.remove()
   }
@@ -54,10 +64,10 @@ function createAndAppendContainer(document: Document):HTMLElement {
   return container
 }
 
-function createShadow(container: HTMLElement):HTMLElement {
+function createShadow(container: HTMLElement): HTMLElement {
   let shadow
 
-  if(container.shadowRoot) {
+  if (container.shadowRoot) {
     shadow = container.shadowRoot
   } else {
     shadow = container.attachShadow({ mode: 'open' })
@@ -66,9 +76,9 @@ function createShadow(container: HTMLElement):HTMLElement {
   return shadow
 }
 
-function createAndAppendInsideContainer(document: Document, shadow: HTMLElement):HTMLElement {
-  let insideContainer = document.createElement('div')
-  
+function createAndAppendInsideContainer(document: Document, shadow: HTMLElement): HTMLElement {
+  const insideContainer = document.createElement('div')
+
   insideContainer.setAttribute('id', 'ReactDialogInsideContainer')
   shadow.appendChild(insideContainer)
 
@@ -76,25 +86,26 @@ function createAndAppendInsideContainer(document: Document, shadow: HTMLElement)
 }
 
 function openContainer(container: HTMLElement) {
-  setTimeout(() => { container.classList.add('open') }, 0)
+  setTimeout(() => {
+    container.classList.add('open')
+  }, 0)
 }
 
 interface ShadowContainerParameters {
-  document: Document,
+  document: Document
   styles?: string
 }
 
 export default function ShadowContainer({
   document,
-  styles = ''
-}: ShadowContainerParameters):HTMLElement {
-
-  let container = createAndAppendContainer(document)
-  let shadow = createShadow(container)
-  let insideContainer = createAndAppendInsideContainer(document, shadow)
+  styles = '',
+}: ShadowContainerParameters): HTMLElement {
+  const container = createAndAppendContainer(document)
+  const shadow = createShadow(container)
+  const insideContainer = createAndAppendInsideContainer(document, shadow)
   injectOutsideStyles(document)
   injectInsideStyles(document, shadow, styles)
   openContainer(container)
-  
+
   return insideContainer
 }
