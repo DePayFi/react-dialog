@@ -31,4 +31,4 @@ jobs:
           npm run build
       - name: Run Cypress Tests
         run: |
-          test:integration
+          yarn test:integration
