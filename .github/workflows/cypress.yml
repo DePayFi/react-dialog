@@ -10,10 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: '12'
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 2.7.2
+          node-version: '14'
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -26,19 +23,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: Cache Ruby Gems
-        uses: actions/cache@v2
-        with:
-          path: /.tmp/vendor/bundle
-          key: ${{ runner.os }}-gems-latest-${{ hashFiles('**/Gemfile.lock', '**.*.gemspec') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-latest-
-      - name: Bundle Install
-        env:
-          BUNDLE_GEM__FURY__IO: ${{ secrets.BUNDLE_GEM__FURY__IO }}
-        run: |
-          bundle config path /.tmp/vendor/bundle
-          bundle install --jobs 4 --retry 3
       - name: npm install
         run: |
           npm install
