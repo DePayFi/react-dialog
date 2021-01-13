@@ -86,7 +86,7 @@ describe('render', () => {
           debugger
           expect(
             container.shadowRoot.querySelector('style').innerHTML.replace(/\s/g,'')
-          ).to.equal('h1 {color: white;}')
+          ).to.equal('h1{color:white;}')
         })
       })
     })
