@@ -1,9 +1,9 @@
-name: JS Unit Tests
+name: Lint
 
 on: push
 
 jobs:
-  js-unit:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,6 +26,6 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: npm run test:unit
+      - name: yarn lint
         run: |
-          npm run test:unit
+          yarn lint

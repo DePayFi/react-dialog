@@ -47,9 +47,4 @@ jobs:
           npm run build
       - name: Run Cypress Tests
         run: |
-          PORT="$(npx get-port)"
-          spec/dummy/bin/rails server -p $PORT &
-          SERVER_PID=$!
-          trap "kill $SERVER_PID" EXIT
-          npx wait-on http://localhost:$PORT/test --timeout 20000
-          CYPRESS_BASE_URL=http://localhost:$PORT npm run test:integration
+          test:integration

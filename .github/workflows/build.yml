@@ -1,9 +1,9 @@
-name: NPM Lint
+name: Build
 
 on: push
 
 jobs:
-  npmlint:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,6 +26,6 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: npm run lint
+      - name: yarn build
         run: |
-          npm run lint
+          yarn build
