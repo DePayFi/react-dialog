@@ -27,7 +27,9 @@
       style.type = 'text/css';
       style.setAttribute('id', shadowContainerStyleId);
       style.appendChild(document.createTextNode(`
-    #` + shadowContainerId + ` {
+    #` +
+          shadowContainerId +
+          ` {
       background: rgba(0,0,0,0);
       bottom: 0;
       height: 100%;
@@ -41,7 +43,9 @@
       z-index: 99999;
     }
 
-    #` + shadowContainerId + `.open {
+    #` +
+          shadowContainerId +
+          `.open {
       background: rgba(0,0,0,0.4);
       opacity: 1;
       top: 0;
@@ -77,18 +81,20 @@
       return shadow;
   }
   function createAndAppendInsideContainer(document, shadow) {
-      let insideContainer = document.createElement('div');
+      const insideContainer = document.createElement('div');
       insideContainer.setAttribute('id', 'ReactDialogInsideContainer');
       shadow.appendChild(insideContainer);
       return insideContainer;
   }
   function openContainer(container) {
-      setTimeout(() => { container.classList.add('open'); }, 0);
+      setTimeout(() => {
+          container.classList.add('open');
+      }, 0);
   }
-  function ShadowContainer({ document, styles = '' }) {
-      let container = createAndAppendContainer(document);
-      let shadow = createShadow(container);
-      let insideContainer = createAndAppendInsideContainer(document, shadow);
+  function ShadowContainer({ document, styles = '', }) {
+      const container = createAndAppendContainer(document);
+      const shadow = createShadow(container);
+      const insideContainer = createAndAppendInsideContainer(document, shadow);
       injectOutsideStyles(document);
       injectInsideStyles(document, shadow, styles);
       openContainer(container);
@@ -96,9 +102,9 @@
   }
 
   const render = function ({ document, content, styles = '' }) {
-      return ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), ShadowContainer({
+      ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), ShadowContainer({
           document,
-          styles
+          styles,
       }));
   };
 

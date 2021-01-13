@@ -1,0 +1,55 @@
+name: Cypress
+
+on: push
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Cache Ruby Gems
+        uses: actions/cache@v2
+        with:
+          path: /.tmp/vendor/bundle
+          key: ${{ runner.os }}-gems-latest-${{ hashFiles('**/Gemfile.lock', '**.*.gemspec') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-latest-
+      - name: Bundle Install
+        env:
+          BUNDLE_GEM__FURY__IO: ${{ secrets.BUNDLE_GEM__FURY__IO }}
+        run: |
+          bundle config path /.tmp/vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: npm install
+        run: |
+          npm install
+      - name: npm run build
+        run: |
+          npm run build
+      - name: Run Cypress Tests
+        run: |
+          PORT="$(npx get-port)"
+          spec/dummy/bin/rails server -p $PORT &
+          SERVER_PID=$!
+          trap "kill $SERVER_PID" EXIT
+          npx wait-on http://localhost:$PORT/test --timeout 20000
+          CYPRESS_BASE_URL=http://localhost:$PORT npm run test:integration
