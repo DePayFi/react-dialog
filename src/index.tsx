@@ -20,7 +20,4 @@ const render = function ({ document, content, styles = '' }: renderParamenters):
   )
 }
 
-export {
-  render,
-  DialogContext
-}
+export { render, DialogContext }
