@@ -4,4 +4,11 @@
 
 ```
 yarn install
+yarn start
+```
+
+### Release
+
+```
+npm publish
 ```
