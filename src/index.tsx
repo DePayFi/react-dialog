@@ -1,4 +1,5 @@
 import Dialog from './components/Dialog'
+import DialogContext from './contexts/DialogContext'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ShadowContainer from './utils/ShadowContainer'
@@ -19,4 +20,7 @@ const render = function ({ document, content, styles = '' }: renderParamenters):
   )
 }
 
-export { render }
+export {
+  render,
+  DialogContext
+}

@@ -15,6 +15,8 @@
       }
   }
 
+  var DialogContext = React__default['default'].createContext({});
+
   const shadowContainerId = 'ReactDialogShadowContainer';
   const shadowContainerStyleId = 'ReactDialogShadowContainerStyles';
   function injectOutsideStyles(document) {
@@ -106,6 +108,7 @@
       }));
   };
 
+  exports.DialogContext = DialogContext;
   exports.render = render;
 
   Object.defineProperty(exports, '__esModule', { value: true });

@@ -16,6 +16,8 @@ class Dialog extends React__default['default'].Component {
     }
 }
 
+var DialogContext = React__default['default'].createContext({});
+
 const shadowContainerId = 'ReactDialogShadowContainer';
 const shadowContainerStyleId = 'ReactDialogShadowContainerStyles';
 function injectOutsideStyles(document) {
@@ -107,4 +109,5 @@ const render = function ({ document, content, styles = '' }) {
     }));
 };
 
+exports.DialogContext = DialogContext;
 exports.render = render;
