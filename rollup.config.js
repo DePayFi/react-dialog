@@ -5,17 +5,14 @@ export default {
   input: 'src/index.tsx',
   output: [
     {
-      file: pkg.main,
       format: 'cjs',
       file: 'dist/cjs/index.js'
     },
     {
-      file: pkg.module,
       format: 'es',
       file: 'dist/es/index.js'
     },
     {
-      file: pkg.module,
       format: 'umd',
       name: pkg.moduleName,
       file: 'dist/umd/index.js'
