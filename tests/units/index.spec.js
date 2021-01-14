@@ -1,4 +1,4 @@
-import { DialogContext } from 'dist/es/index.js';
+import { DialogContext } from 'dist/cjs/index.js';
 
 describe('depay-react-dialog', () => {
   it('should export DialogContext', () => {
