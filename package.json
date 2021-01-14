@@ -1,7 +1,7 @@
 {
   "name": "depay-react-dialog",
   "moduleName": "ReactDialog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A basic dialog component for react.",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -22,7 +22,7 @@
     "test:watch": "jest --watch --no-cache",
     "test": "yarn test:units && yarn test:integration"
   },
-  "repository": "git@github.com:DePayFi/react-dialog.git",
+  "repository": "git@github.com:DePayFi/depay-react-dialog.git",
   "keywords": [
     "react",
     "dialog"
@@ -30,9 +30,9 @@
   "author": "depay.fi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DePayFi/react-dialog/issues"
+    "url": "https://github.com/DePayFi/depay-react-dialog/issues"
   },
-  "homepage": "https://github.com/DePayFi/react-dialog#readme",
+  "homepage": "https://github.com/DePayFi/depay-react-dialog#readme",
   "private": false,
   "dependencies": {
     "react-dom": "^17.0.1"
