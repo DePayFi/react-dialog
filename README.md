@@ -3,5 +3,5 @@
 ### Get started
 
 ```
-npm install
+yarn install
 ```
