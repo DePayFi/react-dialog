@@ -56,7 +56,9 @@ class Dialog extends React.Component {
   }
 
   closeDialog() {
-    if(this.props.closable === false) { return }
+    if (this.props.closable === false) {
+      return
+    }
     this.setState({ open: false }, () => {
       setTimeout(() => this.props.close(), 400)
     })
@@ -69,7 +71,7 @@ class Dialog extends React.Component {
   }
 
   onClickBackground(event) {
-    this.closeDialog();
+    this.closeDialog()
   }
 
   componentDidMount() {
@@ -88,7 +90,7 @@ class Dialog extends React.Component {
     return (
       <div className={classNames.join(' ')}>
         <style>{style}</style>
-        <div className="ReactDialogBackground" onClick={this.onClickBackground.bind(this)}/>
+        <div className="ReactDialogBackground" onClick={this.onClickBackground.bind(this)} />
         <div className="ReactDialogInner">{this.props.children}</div>
       </div>
     )
