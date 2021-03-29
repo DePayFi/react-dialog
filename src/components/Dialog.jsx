@@ -22,6 +22,17 @@ const style = `
     background: rgba(0,0,0,0.4);
   }
 
+  .ReactDialogBackground {
+    bottom: 0;
+    display: block;
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100vw;
+  }
+
   .ReactDialogInner {
     opacity: 0;
     position: relative;
@@ -57,6 +68,10 @@ class Dialog extends React.Component {
     }
   }
 
+  onClickBackground(event) {
+    this.closeDialog();
+  }
+
   componentDidMount() {
     setTimeout(() => {
       this.setState({ open: true })
@@ -73,6 +88,7 @@ class Dialog extends React.Component {
     return (
       <div className={classNames.join(' ')}>
         <style>{style}</style>
+        <div className="ReactDialogBackground" onClick={this.onClickBackground.bind(this)}/>
         <div className="ReactDialogInner">{this.props.children}</div>
       </div>
     )

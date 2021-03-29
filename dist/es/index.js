@@ -26,6 +26,17 @@ const style = `
     background: rgba(0,0,0,0.4);
   }
 
+  .ReactDialogBackground {
+    bottom: 0;
+    display: block;
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100vw;
+  }
+
   .ReactDialogInner {
     opacity: 0;
     position: relative;
@@ -49,16 +60,20 @@ class Dialog extends React.Component {
   }
 
   closeDialog() {
+    if(this.props.closable === false) { return }
     this.setState({ open: false }, () => {
-      setTimeout(() => this.props.close, 400);
+      setTimeout(() => this.props.close(), 400);
     });
   }
 
   onKeyDown(event) {
-    console.log('onKeyDown', event.key);
     if (event.key === 'Escape') {
       this.closeDialog();
     }
+  }
+
+  onClickBackground(event) {
+    this.closeDialog();
   }
 
   componentDidMount() {
@@ -75,9 +90,10 @@ class Dialog extends React.Component {
   render() {
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
     return (
-      React.createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 74}}
-        , React.createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 75}}, style)
-        , React.createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 76}}, this.props.children)
+      React.createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 89}}
+        , React.createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 90}}, style)
+        , React.createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 91}})
+        , React.createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 92}}, this.props.children)
       )
     )
   }
