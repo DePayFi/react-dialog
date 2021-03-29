@@ -45,6 +45,7 @@ class Dialog extends React.Component {
   }
 
   closeDialog() {
+    if(this.props.closable === false) { return }
     this.setState({ open: false }, () => {
       setTimeout(() => this.props.close(), 400)
     })
