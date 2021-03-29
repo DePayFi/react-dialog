@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { useEffect } from 'react'
@@ -36,8 +37,12 @@ const style = `
 `
 
 class Dialog extends React.Component {
-  state = {
-    open: false,
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      open: true,
+    }
   }
 
   closeDialog() {
@@ -47,20 +52,20 @@ class Dialog extends React.Component {
   }
 
   onKeyDown(event) {
-    if(event.key === 'Escape') { 
-      this.closeDialog();
+    if (event.key === 'Escape') {
+      this.closeDialog()
     }
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({ open: true })
-    }, 1);
-    document.addEventListener('keydown', this.onKeyDown.bind(this), false);
+    }, 1)
+    document.addEventListener('keydown', this.onKeyDown.bind(this), false)
   }
 
   componentWillUnmount() {
-    document.addEventListener('keydown', this.onKeyDown.bind(this), false);
+    document.addEventListener('keydown', this.onKeyDown.bind(this), false)
   }
 
   render() {
@@ -68,10 +73,15 @@ class Dialog extends React.Component {
     return (
       <div className={classNames.join(' ')}>
         <style>{style}</style>
-        <div className="ReactDialogInner">{ this.props.children }</div>
+        <div className="ReactDialogInner">{this.props.children}</div>
       </div>
     )
   }
+}
+
+Dialog.propTypes = {
+  close: PropTypes.func,
+  children: PropTypes.node.isRequired,
 }
 
 export default Dialog
