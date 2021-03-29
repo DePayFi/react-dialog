@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { useEffect } from 'react'
@@ -47,7 +46,7 @@ class Dialog extends React.Component {
 
   closeDialog() {
     this.setState({ open: false }, () => {
-      setTimeout(() => this.props.close, 400)
+      setTimeout(() => this.props.close(), 400)
     })
   }
 
@@ -61,11 +60,11 @@ class Dialog extends React.Component {
     setTimeout(() => {
       this.setState({ open: true })
     }, 1)
-    document.addEventListener('keydown', this.onKeyDown.bind(this), false)
+    this.props.document.addEventListener('keydown', this.onKeyDown.bind(this), false)
   }
 
   componentWillUnmount() {
-    document.addEventListener('keydown', this.onKeyDown.bind(this), false)
+    this.props.document.addEventListener('keydown', this.onKeyDown.bind(this), false)
   }
 
   render() {
@@ -77,11 +76,6 @@ class Dialog extends React.Component {
       </div>
     )
   }
-}
-
-Dialog.propTypes = {
-  close: PropTypes.func,
-  children: PropTypes.node.isRequired,
 }
 
 export default Dialog

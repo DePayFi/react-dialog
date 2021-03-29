@@ -16,23 +16,22 @@ class ReactDialog extends React.Component {
   }
 
   render() {
+    let _document = (this.props.document || document);
     if (this.state.open) {
       // enforces unmount otherwise
       return ReactDOM.createPortal(
-        <Dialog close={this.close.bind(this)} closable={this.props.closable}>
+        <Dialog
+          close={this.close.bind(this)}
+          closable={this.props.closable}
+          document={_document}
+        >
           {this.props.children}
         </Dialog>,
-        (this.props.document || document).body,
+        _document.body,
       )
     }
     return null
   }
-}
-
-ReactDialog.propTypes = {
-  document: PropTypes.node,
-  children: PropTypes.node.isRequired,
-  closable: PropTypes.bool,
 }
 
 export { ReactDialog }

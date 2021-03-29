@@ -1,3 +1,5 @@
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -46,10 +48,14 @@ const style = `
   }
 `;
 
-class Dialog extends React__default['default'].Component {constructor(...args) { super(...args); Dialog.prototype.__init.call(this); }
-  __init() {this.state = {
-    open: false,
-  };}
+class Dialog extends React__default['default'].Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: true,
+    };
+  }
 
   closeDialog() {
     this.setState({ open: false }, () => {
@@ -58,7 +64,8 @@ class Dialog extends React__default['default'].Component {constructor(...args) {
   }
 
   onKeyDown(event) {
-    if(event.key === 'Escape') { 
+    console.log('onKeyDown', event.key);
+    if (event.key === 'Escape') {
       this.closeDialog();
     }
   }
@@ -67,45 +74,54 @@ class Dialog extends React__default['default'].Component {constructor(...args) {
     setTimeout(() => {
       this.setState({ open: true });
     }, 1);
-    document.addEventListener('keydown', this.onKeyDown.bind(this), false);
+    this.props.document.addEventListener('keydown', this.onKeyDown.bind(this), false);
   }
 
   componentWillUnmount() {
-    document.addEventListener('keydown', this.onKeyDown.bind(this), false);
+    this.props.document.addEventListener('keydown', this.onKeyDown.bind(this), false);
   }
 
   render() {
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
     return (
-      React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 69}}
-        , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 70}}, style)
-        , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 71}},  this.props.children )
+      React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 74}}
+        , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 75}}, style)
+        , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 76}}, this.props.children)
       )
     )
   }
 }
 
 const _jsxFileName$1 = "/Users/sebastian/Work/DePay/depay-react-dialog/src/index.jsx";
-class ReactDialog extends React__default['default'].Component {constructor(...args) { super(...args); ReactDialog.prototype.__init.call(this); }
-  __init() {this.state = {
-    open: true
-  };}
+class ReactDialog extends React__default['default'].Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: true,
+    };
+  }
 
   close() {
-    this.setState({open: false});
+    this.setState({ open: false });
   }
 
   render() {
-    if(this.state.open) { // enforces unmount otherwise
+    let _document = (this.props.document || document);
+    if (this.state.open) {
+      // enforces unmount otherwise
       return ReactDOM__default['default'].createPortal(
         React__default['default'].createElement(Dialog, {
-          close:  this.close.bind(this) ,
-          closable:  this.props.closable , __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 17}}
-        ,  this.props.children ),
-        (this.props.document || document).body
+          close: this.close.bind(this),
+          closable: this.props.closable,
+          document: _document, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 23}}
+        
+          , this.props.children
+        ),
+        _document.body,
       )
     }
-    return null;
+    return null
   }
 }
 
