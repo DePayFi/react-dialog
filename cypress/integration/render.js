@@ -1,5 +1,5 @@
 import React from 'react'
-import { renderDialog } from 'src'
+import { renderDialog } from '../../src'
 
 describe('renderDialog', () => {
   

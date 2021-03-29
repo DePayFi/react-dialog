@@ -1,5 +1,5 @@
 {
-  "pluginsFile": "cypress/plugins.js",
-  "supportFile": "cypress/support.js",
+  "pluginsFile": false,
+  "supportFile": false,
   "fixturesFolder": false
 }

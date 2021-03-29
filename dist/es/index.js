@@ -1,8 +1,7 @@
-
-(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+const _jsxFileName = "/Users/sebastian/Work/DePay/depay-react-dialog/src/components/Dialog.jsx";
 const style = `
   .ReactDialog {
     align-items: center;
@@ -35,30 +34,32 @@ const style = `
     top: -15vh;
   }
 `;
-class Dialog extends React.Component {
-    constructor() {
-        super(...arguments);
-        this.state = {
-            open: false,
-        };
-    }
-    componentDidMount() {
-        setTimeout(() => {
-            this.setState({ open: true });
-        }, 1);
-    }
-    render() {
-        const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
-        return (React.createElement("div", { className: classNames.join(' ') },
-            React.createElement("style", null, style),
-            React.createElement("div", { className: "ReactDialogInner" }, this.props.content)));
-    }
+
+class Dialog extends React.Component {constructor(...args) { super(...args); Dialog.prototype.__init.call(this); }
+  __init() {this.state = {
+    open: false,
+  };}
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ open: true });
+    }, 1);
+  }
+
+  render() {
+    const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
+    return (
+      React.createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 50}}
+        , React.createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 51}}, style)
+        , React.createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 52}}, this.props.content)
+      )
+    )
+  }
 }
 
-var DialogContext = React.createContext({});
-
+const _jsxFileName$1 = "/Users/sebastian/Work/DePay/depay-react-dialog/src/index.jsx";
 const renderDialog = function ({ container, content }) {
-    ReactDOM.render(React.createElement(Dialog, { content: content }), container);
+  ReactDOM.render(React.createElement(Dialog, { content: content, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 6}} ), container);
 };
 
-export { DialogContext, renderDialog };
+export { renderDialog };

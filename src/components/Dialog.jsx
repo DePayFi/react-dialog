@@ -1,13 +1,5 @@
 import React from 'react'
 
-interface DialogProps {
-  content: React.ReactNode
-}
-
-interface DialogState {
-  open: boolean
-}
-
 const style = `
   .ReactDialog {
     align-items: center;
@@ -41,18 +33,18 @@ const style = `
   }
 `
 
-class Dialog extends React.Component<DialogProps, DialogState> {
+class Dialog extends React.Component {
   state = {
     open: false,
   }
 
-  componentDidMount(): void {
+  componentDidMount() {
     setTimeout(() => {
       this.setState({ open: true })
     }, 1)
   }
 
-  render(): React.ReactNode {
+  render() {
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : '']
     return (
       <div className={classNames.join(' ')}>

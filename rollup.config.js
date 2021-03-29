@@ -1,8 +1,12 @@
-import typescript from 'rollup-plugin-typescript2';
+import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json';
+import replace from '@rollup/plugin-replace';
+import resolve from '@rollup/plugin-node-resolve';
+import sucrase from '@rollup/plugin-sucrase';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 export default {
-  input: 'src/index.tsx',
+  input: 'src/index.jsx',
   output: [
     {
       format: 'cjs',
@@ -23,8 +27,19 @@ export default {
     ...Object.keys(pkg.peerDependencies || {}),
   ],
   plugins: [
-    typescript({
-      typescript: require('typescript'),
+    sucrase({
+      exclude: ['node_modules/**'],
+      transforms: ['typescript', 'jsx']
     }),
+    resolve({
+      extensions: ['.js', '.ts', '.jsx']
+    }),
+    nodeResolve(),
+    commonjs({
+      include: 'node_modules/**'
+    }),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify( 'production' )
+    })
   ]
 }

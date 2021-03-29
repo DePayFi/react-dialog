@@ -1,5 +1,3 @@
-
-(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-dom')) :
   typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-dom'], factory) :
@@ -11,6 +9,7 @@
   var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
   var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
+  const _jsxFileName = "/Users/sebastian/Work/DePay/depay-react-dialog/src/components/Dialog.jsx";
   const style = `
   .ReactDialog {
     align-items: center;
@@ -43,33 +42,34 @@
     top: -15vh;
   }
 `;
-  class Dialog extends React__default['default'].Component {
-      constructor() {
-          super(...arguments);
-          this.state = {
-              open: false,
-          };
-      }
-      componentDidMount() {
-          setTimeout(() => {
-              this.setState({ open: true });
-          }, 1);
-      }
-      render() {
-          const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
-          return (React__default['default'].createElement("div", { className: classNames.join(' ') },
-              React__default['default'].createElement("style", null, style),
-              React__default['default'].createElement("div", { className: "ReactDialogInner" }, this.props.content)));
-      }
+
+  class Dialog extends React__default['default'].Component {constructor(...args) { super(...args); Dialog.prototype.__init.call(this); }
+    __init() {this.state = {
+      open: false,
+    };}
+
+    componentDidMount() {
+      setTimeout(() => {
+        this.setState({ open: true });
+      }, 1);
+    }
+
+    render() {
+      const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
+      return (
+        React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 50}}
+          , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 51}}, style)
+          , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 52}}, this.props.content)
+        )
+      )
+    }
   }
 
-  var DialogContext = React__default['default'].createContext({});
-
+  const _jsxFileName$1 = "/Users/sebastian/Work/DePay/depay-react-dialog/src/index.jsx";
   const renderDialog = function ({ container, content }) {
-      ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), container);
+    ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 6}} ), container);
   };
 
-  exports.DialogContext = DialogContext;
   exports.renderDialog = renderDialog;
 
   Object.defineProperty(exports, '__esModule', { value: true });
