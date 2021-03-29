@@ -48,7 +48,7 @@ class Dialog extends React__default['default'].Component {
     constructor() {
         super(...arguments);
         this.state = {
-            open: false
+            open: false,
         };
     }
     componentDidMount() {
@@ -57,10 +57,10 @@ class Dialog extends React__default['default'].Component {
         }, 1);
     }
     render() {
-        let classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
+        const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
         return (React__default['default'].createElement("div", { className: classNames.join(' ') },
             React__default['default'].createElement("style", null, style),
-            React__default['default'].createElement("div", { className: 'ReactDialogInner' }, this.props.content)));
+            React__default['default'].createElement("div", { className: "ReactDialogInner" }, this.props.content)));
     }
 }
 

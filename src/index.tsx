@@ -9,10 +9,7 @@ interface renderParamenters {
 }
 
 const render = function ({ container, content }: renderParamenters): void {
-  ReactDOM.render(
-    <Dialog content={content} />,
-    container
-  )
+  ReactDOM.render(<Dialog content={content} />, container)
 }
 
 export { render, DialogContext }

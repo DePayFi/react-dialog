@@ -39,27 +39,25 @@ const style = `
     opacity: 1.0;
     top: -15vh;
   }
-`;
+`
 
 class Dialog extends React.Component<DialogProps, DialogState> {
   state = {
-    open: false
+    open: false,
   }
 
-  componentDidMount() {
-    setTimeout(()=>{
+  componentDidMount(): void {
+    setTimeout(() => {
       this.setState({ open: true })
     }, 1)
   }
-  
+
   render(): React.ReactNode {
-    let classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : '']
-    return(
-      <div className={ classNames.join(' ') }>
-        <style>{ style }</style>
-        <div className='ReactDialogInner'>
-          { this.props.content }
-        </div>
+    const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : '']
+    return (
+      <div className={classNames.join(' ')}>
+        <style>{style}</style>
+        <div className="ReactDialogInner">{this.props.content}</div>
       </div>
     )
   }
