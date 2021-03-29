@@ -11,12 +11,16 @@ npm install --save depay-react-dialog
 ```
 
 ```javascript
-import { renderDialog } from ReactDialog;
+import ReactDialog from 'depay-react-dialog';
 
-renderDialog({
-  container: document,
-  content: React.createElement('h1', {}, 'I am a dialog!')
-});
+render() {
+  return(
+    ...
+    <ReactDialog>
+      <h1>I am a dialog</h1>
+    </ReactDialog>
+  )
+}
 ```
 
 ## Development
