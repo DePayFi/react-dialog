@@ -1,8 +1,7 @@
 import DialogContext from './contexts/DialogContext';
 interface renderParamenters {
-    document: Document;
+    container: HTMLElement;
     content: HTMLElement;
-    styles?: string;
 }
-declare const render: ({ document, content, styles }: renderParamenters) => void;
+declare const render: ({ container, content }: renderParamenters) => void;
 export { render, DialogContext };
