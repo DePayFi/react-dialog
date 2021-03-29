@@ -2,22 +2,14 @@ import Dialog from './components/Dialog'
 import DialogContext from './contexts/DialogContext'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ShadowContainer from './utils/ShadowContainer'
 
 interface renderParamenters {
-  document: Document
+  container: HTMLElement
   content: HTMLElement
-  styles?: string
 }
 
-const render = function ({ document, content, styles = '' }: renderParamenters): void {
-  ReactDOM.render(
-    <Dialog content={content} />,
-    ShadowContainer({
-      document,
-      styles,
-    }),
-  )
+const render = function ({ container, content }: renderParamenters): void {
+  ReactDOM.render(<Dialog content={content} />, container)
 }
 
 export { render, DialogContext }

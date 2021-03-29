@@ -1,3 +1,5 @@
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -10,103 +12,62 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
+const style = `
+  .ReactDialog {
+    align-items: center;
+    background: rgba(0,0,0,0);
+    bottom: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: background 0.4s ease;
+    width: 100vw;
+  }
+
+  .ReactDialog.ReactDialogOpen {
+    background: rgba(0,0,0,0.4);
+  }
+
+  .ReactDialogInner {
+    opacity: 0;
+    position: relative;
+    top: -17vh;
+    transition: all 0.4s ease;
+  }
+
+  .ReactDialog.ReactDialogOpen .ReactDialogInner {
+    opacity: 1.0;
+    top: -15vh;
+  }
+`;
 class Dialog extends React__default['default'].Component {
+    constructor() {
+        super(...arguments);
+        this.state = {
+            open: false,
+        };
+    }
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({ open: true });
+        }, 1);
+    }
     render() {
-        return this.props.content;
+        const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
+        return (React__default['default'].createElement("div", { className: classNames.join(' ') },
+            React__default['default'].createElement("style", null, style),
+            React__default['default'].createElement("div", { className: "ReactDialogInner" }, this.props.content)));
     }
 }
 
 var DialogContext = React__default['default'].createContext({});
 
-const shadowContainerId = 'ReactDialogShadowContainer';
-const shadowContainerStyleId = 'ReactDialogShadowContainerStyles';
-function injectOutsideStyles(document) {
-    if (document.querySelector(shadowContainerStyleId)) {
-        return;
-    }
-    const style = document.createElement('style');
-    style.type = 'text/css';
-    style.setAttribute('id', shadowContainerStyleId);
-    style.appendChild(document.createTextNode(`
-    #` +
-        shadowContainerId +
-        ` {
-      background: rgba(0,0,0,0);
-      bottom: 0;
-      height: 100%;
-      left: 0;
-      opacity: 0;
-      position: fixed;
-      right: 0;
-      top: -1rem;
-      transition: all 0.4s ease-out;
-      width: 100%;
-      z-index: 99999;
-    }
-
-    #` +
-        shadowContainerId +
-        `.open {
-      background: rgba(0,0,0,0.4);
-      opacity: 1;
-      top: 0;
-    }
-  `));
-    document.getElementsByTagName('head')[0].appendChild(style);
-}
-function injectInsideStyles(document, shadow, styles) {
-    const style = document.createElement('style');
-    style.type = 'text/css';
-    style.appendChild(document.createTextNode(styles));
-    shadow.appendChild(style);
-}
-function createAndAppendContainer(document) {
-    let container = document.getElementById(shadowContainerId);
-    if (container) {
-        ReactDOM__default['default'].unmountComponentAtNode(container);
-        container.remove();
-    }
-    container = document.createElement('div');
-    container.setAttribute('id', 'ReactDialogShadowContainer');
-    document.body.appendChild(container);
-    return container;
-}
-function createShadow(container) {
-    let shadow;
-    if (container.shadowRoot) {
-        shadow = container.shadowRoot;
-    }
-    else {
-        shadow = container.attachShadow({ mode: 'open' });
-    }
-    return shadow;
-}
-function createAndAppendInsideContainer(document, shadow) {
-    const insideContainer = document.createElement('div');
-    insideContainer.setAttribute('id', 'ReactDialogInsideContainer');
-    shadow.appendChild(insideContainer);
-    return insideContainer;
-}
-function openContainer(container) {
-    setTimeout(() => {
-        container.classList.add('open');
-    }, 0);
-}
-function ShadowContainer({ document, styles = '', }) {
-    const container = createAndAppendContainer(document);
-    const shadow = createShadow(container);
-    const insideContainer = createAndAppendInsideContainer(document, shadow);
-    injectOutsideStyles(document);
-    injectInsideStyles(document, shadow, styles);
-    openContainer(container);
-    return insideContainer;
-}
-
-const render = function ({ document, content, styles = '' }) {
-    ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), ShadowContainer({
-        document,
-        styles,
-    }));
+const render = function ({ container, content }) {
+    ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), container);
 };
 
 exports.DialogContext = DialogContext;

@@ -3,22 +3,19 @@ import { render } from 'src'
 
 describe('render', () => {
   
-  it('attaches a shadow container to the body and renders the given content into the root of the shadow dom', () => {
+  it('attaches a dialog to the given container and opens the dialog', () => {
   
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
         render({
-          document,
+          container: document,
           content: React.createElement('h1', {}, 'I am a dialog!')
         })
-        
-        cy.get('#ReactDialogShadowContainer').should(element => {
-          const [container] = element.get()
-          expect(
-            container.shadowRoot.querySelector('h1').innerHTML
-          ).to.equal('I am a dialog!')
-        })
+
+        expect(
+          document.querySelector('h1').innerHTML
+        ).to.equal('I am a dialog!')
       })
     })
   })
@@ -29,65 +26,33 @@ describe('render', () => {
       cy.document().then((document) => {
 
         render({
-          document,
+          container: document,
           content: React.createElement('h1', {}, 'I am a dialog!')
         })
         render({
-          document,
+          container: document,
           content: React.createElement('h1', {}, 'I am another dialog!')
         })
 
-        cy.get('body').find('#ReactDialogShadowContainer').its('length').should('eq', 1)
+        cy.get('.ReactDialog').its('length').should('eq', 1)
 
-        cy.get('#ReactDialogShadowContainer').should(element => {
-          const [container] = element.get()
-          expect(
-            container.shadowRoot.querySelector('h1').innerHTML
-          ).to.equal('I am another dialog!')
-        })
+        expect(
+          document.querySelector('h1').innerHTML
+        ).to.equal('I am another dialog!')
       })
     })
   })
 
-  it('injects shadow container styles into the embedding document (only once)', () => {
+  it('injects styles into the dialog to animate opening', () => {
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
         render({
-          document,
-          content: React.createElement('h1', {}, 'I am a dialog and my container is styled!')
-        })
-        render({
-          document,
-          content: React.createElement('h1', {}, 'I am another dialog and my container is styled!')
+          container: document,
+          content: React.createElement('h1', {}, 'I am another dialog and I am styled!')
         })
 
-        cy.get('head').find('#ReactDialogShadowContainerStyles').its('length').should('eq', 1)
-      })
-    })
-  })
-
-  it('injects styles into the shadow root dom', () => {
-    cy.visit('cypress/test.html').then((contentWindow) => {
-      cy.document().then((document) => {
-
-        render({
-          document,
-          content: React.createElement('h1', {}, 'I am a dialog and my container is styled!'),
-          styles: `
-            h1 {
-              color: white;
-            }
-          `
-        })
-
-        cy.get('#ReactDialogShadowContainer').should(element => {
-          const [container] = element.get()
-          debugger
-          expect(
-            container.shadowRoot.querySelector('style').innerHTML.replace(/\s/g,'')
-          ).to.equal('h1{color:white;}')
-        })
+        cy.get('.ReactDialog style').its('length').should('eq', 1)
       })
     })
   })
