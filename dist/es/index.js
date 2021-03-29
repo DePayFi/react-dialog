@@ -1,5 +1,3 @@
-
-(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -60,7 +58,9 @@ class Dialog extends React.Component {
   }
 
   closeDialog() {
-    if(this.props.closable === false) { return }
+    if (this.props.closable === false) {
+      return
+    }
     this.setState({ open: false }, () => {
       setTimeout(() => this.props.close(), 400);
     });
@@ -90,10 +90,10 @@ class Dialog extends React.Component {
   render() {
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
     return (
-      React.createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 89}}
-        , React.createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 90}}, style)
-        , React.createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 91}})
-        , React.createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 92}}, this.props.children)
+      React.createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 91}}
+        , React.createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 92}}, style)
+        , React.createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 93}} )
+        , React.createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 94}}, this.props.children)
       )
     )
   }
@@ -114,15 +114,11 @@ class ReactDialog extends React.Component {
   }
 
   render() {
-    let _document = (this.props.document || document);
+    let _document = this.props.document || document;
     if (this.state.open) {
       // enforces unmount otherwise
       return ReactDOM.createPortal(
-        React.createElement(Dialog, {
-          close: this.close.bind(this),
-          closable: this.props.closable,
-          document: _document, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 23}}
-        
+        React.createElement(Dialog, { close: this.close.bind(this), closable: this.props.closable, document: _document, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 23}}
           , this.props.children
         ),
         _document.body,
