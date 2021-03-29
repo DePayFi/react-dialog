@@ -22,9 +22,9 @@
   <body>
     <div id="app"/>
     <script>
-      const { render } = window.ReactDialog;
+      const { renderDialog } = window.ReactDialog;
 
-      render({
+      renderDialog({
         container: document.getElementById('app'),
         content: React.createElement('h1', {}, 'I am a dialog!')
       });

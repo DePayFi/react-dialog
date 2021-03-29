@@ -1,16 +1,21 @@
 ## Quickstart
 
-```javascript
-const { render } = window.ReactDialog;
+```
+yarn add depay-react-dialog
+```
 
-render({
-  document,
-  content: React.createElement('h1', {}, 'I am a dialog!'),
-  styles: `
-    h1 {
-      color: red;
-    }
-  `
+or 
+
+```
+npm install --save depay-react-dialog
+```
+
+```javascript
+import { renderDialog } from ReactDialog;
+
+renderDialog({
+  container: document,
+  content: React.createElement('h1', {}, 'I am a dialog!')
 });
 ```
 

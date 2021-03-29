@@ -8,8 +8,8 @@ interface renderParamenters {
   content: HTMLElement
 }
 
-const render = function ({ container, content }: renderParamenters): void {
+const renderDialog = function ({ container, content }: renderParamenters): void {
   ReactDOM.render(<Dialog content={content} />, container)
 }
 
-export { render, DialogContext }
+export { renderDialog, DialogContext }

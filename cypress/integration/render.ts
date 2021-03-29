@@ -1,14 +1,14 @@
 import React from 'react'
-import { render } from 'src'
+import { renderDialog } from 'src'
 
-describe('render', () => {
+describe('renderDialog', () => {
   
   it('attaches a dialog to the given container and opens the dialog', () => {
   
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
-        render({
+        renderDialog({
           container: document,
           content: React.createElement('h1', {}, 'I am a dialog!')
         })
@@ -25,11 +25,11 @@ describe('render', () => {
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
-        render({
+        renderDialog({
           container: document,
           content: React.createElement('h1', {}, 'I am a dialog!')
         })
-        render({
+        renderDialog({
           container: document,
           content: React.createElement('h1', {}, 'I am another dialog!')
         })
@@ -47,7 +47,7 @@ describe('render', () => {
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
-        render({
+        renderDialog({
           container: document,
           content: React.createElement('h1', {}, 'I am another dialog and I am styled!')
         })

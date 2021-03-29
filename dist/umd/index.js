@@ -1,3 +1,5 @@
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-dom')) :
   typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-dom'], factory) :
@@ -63,12 +65,12 @@
 
   var DialogContext = React__default['default'].createContext({});
 
-  const render = function ({ container, content }) {
+  const renderDialog = function ({ container, content }) {
       ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content }), container);
   };
 
   exports.DialogContext = DialogContext;
-  exports.render = render;
+  exports.renderDialog = renderDialog;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

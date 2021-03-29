@@ -3,5 +3,5 @@ interface renderParamenters {
     container: HTMLElement;
     content: HTMLElement;
 }
-declare const render: ({ container, content }: renderParamenters) => void;
-export { render, DialogContext };
+declare const renderDialog: ({ container, content }: renderParamenters) => void;
+export { renderDialog, DialogContext };
