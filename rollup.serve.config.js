@@ -21,7 +21,8 @@ export default Object.assign({}, rollup, {
       include: 'node_modules/**'
     }),
     replace({
-      'process.env.NODE_ENV': JSON.stringify( 'production' )
+      'process.env.NODE_ENV': JSON.stringify( 'production' ),
+      preventAssignment: true
     }),
     serve({
       open: 'true',

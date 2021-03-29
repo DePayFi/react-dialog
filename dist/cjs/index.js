@@ -11,6 +11,8 @@ var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
 const _jsxFileName = "/Users/sebastian/Work/DePay/depay-react-dialog/src/components/Dialog.jsx";
+
+
 const style = `
   .ReactDialog {
     align-items: center;
@@ -49,26 +51,62 @@ class Dialog extends React__default['default'].Component {constructor(...args) {
     open: false,
   };}
 
+  closeDialog() {
+    this.setState({ open: false }, () => {
+      setTimeout(() => this.props.close, 400);
+    });
+  }
+
+  onKeyDown(event) {
+    if(event.key === 'Escape') { 
+      this.closeDialog();
+    }
+  }
+
   componentDidMount() {
     setTimeout(() => {
       this.setState({ open: true });
     }, 1);
+    document.addEventListener('keydown', this.onKeyDown.bind(this), false);
+  }
+
+  componentWillUnmount() {
+    document.addEventListener('keydown', this.onKeyDown.bind(this), false);
   }
 
   render() {
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
     return (
-      React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 50}}
-        , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 51}}, style)
-        , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 52}}, this.props.content)
+      React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 69}}
+        , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 70}}, style)
+        , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 71}},  this.props.children )
       )
     )
   }
 }
 
 const _jsxFileName$1 = "/Users/sebastian/Work/DePay/depay-react-dialog/src/index.jsx";
-const renderDialog = function ({ container, content }) {
-  ReactDOM__default['default'].render(React__default['default'].createElement(Dialog, { content: content, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 6}} ), container);
-};
+class ReactDialog extends React__default['default'].Component {constructor(...args) { super(...args); ReactDialog.prototype.__init.call(this); }
+  __init() {this.state = {
+    open: true
+  };}
 
-exports.renderDialog = renderDialog;
+  close() {
+    this.setState({open: false});
+  }
+
+  render() {
+    if(this.state.open) { // enforces unmount otherwise
+      return ReactDOM__default['default'].createPortal(
+        React__default['default'].createElement(Dialog, {
+          close:  this.close.bind(this) ,
+          closable:  this.props.closable , __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 17}}
+        ,  this.props.children ),
+        (this.props.document || document).body
+      )
+    }
+    return null;
+  }
+}
+
+exports.ReactDialog = ReactDialog;

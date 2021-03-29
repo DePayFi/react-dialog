@@ -22,12 +22,10 @@
   <body>
     <div id="app"/>
     <script>
-      const { renderDialog } = window.ReactDialog;
-
-      renderDialog({
-        container: document.getElementById('app'),
-        content: React.createElement('h1', {}, 'I am a dialog!')
-      });
+      ReactDOM.render(
+        React.createElement(window.ReactDialog.ReactDialog, {}, React.createElement('h1', {}, 'I am a dialog!')),
+        document.getElementById('app')
+      );
     </script>
   </body>
 </html>

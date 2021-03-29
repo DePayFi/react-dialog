@@ -1,4 +1,6 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
+import { useEffect } from 'react'
 
 const style = `
   .ReactDialog {
@@ -38,10 +40,27 @@ class Dialog extends React.Component {
     open: false,
   }
 
+  closeDialog() {
+    this.setState({ open: false }, () => {
+      setTimeout(() => this.props.close, 400)
+    })
+  }
+
+  onKeyDown(event) {
+    if(event.key === 'Escape') { 
+      this.closeDialog();
+    }
+  }
+
   componentDidMount() {
     setTimeout(() => {
       this.setState({ open: true })
-    }, 1)
+    }, 1);
+    document.addEventListener('keydown', this.onKeyDown.bind(this), false);
+  }
+
+  componentWillUnmount() {
+    document.addEventListener('keydown', this.onKeyDown.bind(this), false);
   }
 
   render() {
@@ -49,7 +68,7 @@ class Dialog extends React.Component {
     return (
       <div className={classNames.join(' ')}>
         <style>{style}</style>
-        <div className="ReactDialogInner">{this.props.content}</div>
+        <div className="ReactDialogInner">{ this.props.children }</div>
       </div>
     )
   }

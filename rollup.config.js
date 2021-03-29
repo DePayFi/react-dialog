@@ -10,14 +10,26 @@ export default {
   output: [
     {
       format: 'cjs',
+      globals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM'
+      },
       file: 'dist/cjs/index.js'
     },
     {
       format: 'es',
+      globals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM'
+      },
       file: 'dist/es/index.js'
     },
     {
       format: 'umd',
+      globals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM'
+      },
       name: pkg.moduleName,
       file: 'dist/umd/index.js'
     },
@@ -39,7 +51,8 @@ export default {
       include: 'node_modules/**'
     }),
     replace({
-      'process.env.NODE_ENV': JSON.stringify( 'production' )
+      'process.env.NODE_ENV': JSON.stringify( 'production' ),
+      preventAssignment: true
     })
   ]
 }
