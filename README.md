@@ -66,6 +66,14 @@ render() {
   </ReactDialog>
 ```
 
+`background (string)`: Background passed as CSS to the `ReactDialogBackground`.
+
+```javascript
+  <ReactDialog background={'rgba(255,255,255,0.6)'} close={this.close} open={this.state.showDialog}>
+    <h1>I am a dialog with white background.</h1>
+  </ReactDialog>
+```
+
 `document (Document)`: Allows to forward a different document where the dialog is supposed to live in (created through ReactDOM portal).
 
 ```javascript

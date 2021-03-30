@@ -31,19 +31,21 @@
       }
     </style>
     <script>
-      window.closeDialog = function(){
+      var renderDialog = function(open) {
         ReactDOM.render(
-          React.createElement(window.ReactDialog.ReactDialog, { close: closeDialog, open: false }, React.createElement('h1', {}, 'I am a dialog!')),
+          React.createElement(window.ReactDialog.ReactDialog, { close: closeDialog, open: open, background: 'rgba(230,230,230,0.8)' }, React.createElement('h1', {}, 'I am a dialog!')),
           document.getElementById('dialog')
         );
       }
 
-      window.openDialog = function(){
-        ReactDOM.render(
-          React.createElement(window.ReactDialog.ReactDialog, { close: closeDialog, open: true }, React.createElement('h1', {}, 'I am a dialog!')),
-          document.getElementById('dialog')
-        );
+      window.closeDialog = function(){
+        renderDialog(false);
       }
+
+      window.openDialog = function(){
+        renderDialog(true);
+      }
+
     </script>
   </head>
   <body>
