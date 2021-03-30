@@ -11,7 +11,7 @@ npm install --save depay-react-dialog
 ```
 
 ```javascript
-import ReactDialog from 'depay-react-dialog'
+import { ReactDialog } from 'depay-react-dialog'
 
 render() {
   return(
@@ -28,7 +28,7 @@ render() {
 ### Render
 
 ```javascript
-import ReactDialog from 'depay-react-dialog'
+import { ReactDialog } from 'depay-react-dialog'
 
 render() {
   return(
