@@ -91,7 +91,6 @@ class Dialog extends React.Component {
   }
 
   render() {
-    console.log('RENDER child', this.state.open)
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : '']
     return (
       <div className={classNames.join(' ')}>

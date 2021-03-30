@@ -22,7 +22,6 @@ class ReactDialog extends React.Component {
   }
 
   render() {
-    console.log('RENDER parent', this.state.open)
     let _document = this.props.document || document
     if (this.state.open) {
       return ReactDOM.createPortal(
