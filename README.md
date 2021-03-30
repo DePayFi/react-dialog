@@ -23,7 +23,7 @@ import { ReactDialog } from 'depay-react-dialog'
 
   /*...*/
 
-  <ReactDialog close={this.close} open={this.showDialog}>
+  <ReactDialog close={this.close} open={this.state.showDialog}>
     <h1>I am a dialog</h1>
     <button onclick={this.close}>Close Dialog</button>
   </ReactDialog>
@@ -39,7 +39,7 @@ import { ReactDialog } from 'depay-react-dialog'
 render() {
   return(
     ...
-    <ReactDialog close={this.close} open={this.showDialog}>
+    <ReactDialog close={this.close} open={this.state.showDialog}>
       <h1>I am a dialog</h1>
       <button onclick={this.close}>Close Dialog</button>
     </ReactDialog>
@@ -60,7 +60,7 @@ render() {
 
   /*...*/
 
-  <ReactDialog close={this.close} open={this.showDialog}>
+  <ReactDialog close={this.close} open={this.state.showDialog}>
     <h1>I am a dialog</h1>
     <button onclick={this.close}>Close Dialog</button>
   </ReactDialog>
