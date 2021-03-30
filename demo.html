@@ -17,15 +17,40 @@
       body {
         min-height: 100vh;
       }
+      
+      #app {
+        align-items: center;
+        bottom: 0;
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        left: 0;
+        right: 0;
+        top: 0;
+        width: 100vw;
+      }
     </style>
+    <script>
+      window.closeDialog = function(){
+        ReactDOM.render(
+          React.createElement(window.ReactDialog.ReactDialog, { close: closeDialog, open: false }, React.createElement('h1', {}, 'I am a dialog!')),
+          document.getElementById('dialog')
+        );
+      }
+
+      window.openDialog = function(){
+        ReactDOM.render(
+          React.createElement(window.ReactDialog.ReactDialog, { close: closeDialog, open: true }, React.createElement('h1', {}, 'I am a dialog!')),
+          document.getElementById('dialog')
+        );
+      }
+    </script>
   </head>
   <body>
-    <div id="app"/>
-    <script>
-      ReactDOM.render(
-        React.createElement(window.ReactDialog.ReactDialog, {}, React.createElement('h1', {}, 'I am a dialog!')),
-        document.getElementById('app')
-      );
-    </script>
+    <div id="app">
+      <button onClick='openDialog()'>Open Dialog</button>
+    </div>
+
+    <div id="dialog"/>
   </body>
 </html>

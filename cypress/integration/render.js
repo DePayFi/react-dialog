@@ -10,7 +10,7 @@ describe('render ReactDialog', () => {
       cy.document().then((document) => {
 
         ReactDOM.render(
-          React.createElement(ReactDialog, { document: document }, React.createElement('h1', {}, 'I am a dialog!')),
+          React.createElement(ReactDialog, { document: document, open: true }, React.createElement('h1', {}, 'I am a dialog!')),
           document.getElementById('app')
         );
 
@@ -27,12 +27,12 @@ describe('render ReactDialog', () => {
       cy.document().then((document) => {
 
         ReactDOM.render(
-          React.createElement(ReactDialog, { document: document }, React.createElement('h1', {}, 'I am a dialog!')),
+          React.createElement(ReactDialog, { document: document, open: true }, React.createElement('h1', {}, 'I am a dialog!')),
           document.getElementById('app')
         );
 
         ReactDOM.render(
-          React.createElement(ReactDialog, { document: document }, React.createElement('h1', {}, 'I am another dialog!')),
+          React.createElement(ReactDialog, { document: document, open: true }, React.createElement('h1', {}, 'I am another dialog!')),
           document.getElementById('app')
         );
 
@@ -50,7 +50,7 @@ describe('render ReactDialog', () => {
       cy.document().then((document) => {
 
         ReactDOM.render(
-          React.createElement(ReactDialog, { document: document }, React.createElement('h1', {}, 'I am a dialog!')),
+          React.createElement(ReactDialog, { document: document, open: true }, React.createElement('h1', {}, 'I am a dialog!')),
           document.getElementById('app')
         )
 

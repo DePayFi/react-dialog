@@ -7,26 +7,34 @@ class ReactDialog extends React.Component {
     super(props)
 
     this.state = {
-      open: true,
+      open: props.open,
     }
   }
 
-  close() {
-    this.setState({ open: false })
+  componentDidUpdate(prevProps) {
+    if (this.props.open === false && prevProps.open === true) {
+      setTimeout(() => {
+        this.setState({ open: false })
+      }, 400)
+    } else if (this.props.open === true && prevProps.open === false) {
+      this.setState({ open: true })
+    }
   }
 
   render() {
+    console.log('RENDER parent', this.state.open)
     let _document = this.props.document || document
     if (this.state.open) {
-      // enforces unmount otherwise
       return ReactDOM.createPortal(
-        <Dialog close={this.close.bind(this)} closable={this.props.closable} document={_document}>
+        <Dialog open={this.props.open} close={this.props.close} document={_document}>
           {this.props.children}
         </Dialog>,
         _document.body,
       )
+    } else {
+      // enforces unmount
+      return null
     }
-    return null
   }
 }
 

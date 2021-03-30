@@ -67,12 +67,7 @@ class Dialog extends React__default['default'].Component {
   }
 
   closeDialog() {
-    if (this.props.closable === false) {
-      return
-    }
-    this.setState({ open: false }, () => {
-      setTimeout(() => this.props.close(), 400);
-    });
+    this.props.close();
   }
 
   onKeyDown(event) {
@@ -81,14 +76,24 @@ class Dialog extends React__default['default'].Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.open === false && prevProps.open === true) {
+      this.setState({ open: false });
+    }
+  }
+
   onClickBackground(event) {
     this.closeDialog();
   }
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ open: true });
-    }, 1);
+    this.setState({ open: false }, () => {
+      // make sure state is false first before opening the dialog
+      // to ensure opening is animated
+      setTimeout(() => {
+        this.setState({ open: true });
+      }, 10);
+    });
     this.props.document.addEventListener('keydown', this.onKeyDown.bind(this), false);
   }
 
@@ -97,12 +102,13 @@ class Dialog extends React__default['default'].Component {
   }
 
   render() {
+    console.log('RENDER child', this.state.open);
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
     return (
-      React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 91}}
-        , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 92}}, style)
-        , React__default['default'].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 93}} )
-        , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 94}}, this.props.children)
+      React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 97}}
+        , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 98}}, style)
+        , React__default['default'].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 99}} )
+        , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 100}}, this.props.children)
       )
     )
   }
@@ -114,26 +120,34 @@ class ReactDialog extends React__default['default'].Component {
     super(props);
 
     this.state = {
-      open: true,
+      open: props.open,
     };
   }
 
-  close() {
-    this.setState({ open: false });
+  componentDidUpdate(prevProps) {
+    if (this.props.open === false && prevProps.open === true) {
+      setTimeout(() => {
+        this.setState({ open: false });
+      }, 400);
+    } else if (this.props.open === true && prevProps.open === false) {
+      this.setState({ open: true });
+    }
   }
 
   render() {
+    console.log('RENDER parent', this.state.open);
     let _document = this.props.document || document;
     if (this.state.open) {
-      // enforces unmount otherwise
       return ReactDOM__default['default'].createPortal(
-        React__default['default'].createElement(Dialog, { close: this.close.bind(this), closable: this.props.closable, document: _document, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 23}}
+        React__default['default'].createElement(Dialog, { open: this.props.open, close: this.props.close, document: _document, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 29}}
           , this.props.children
         ),
         _document.body,
       )
+    } else {
+      // enforces unmount
+      return null
     }
-    return null
   }
 }
 

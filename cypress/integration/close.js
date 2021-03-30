@@ -3,14 +3,21 @@ import ReactDOM from 'react-dom'
 import { ReactDialog } from '../../src'
 
 describe('close ReactDialog', () => {
-  
+
   it('closes and unmounts when user clicks ESC', () => {
   
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
+        let closeDialog = function(){
+          ReactDOM.render(
+            React.createElement(ReactDialog, { document: document, open: false, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
+            document.getElementById('app')
+          );
+        }
+        
         ReactDOM.render(
-          React.createElement(ReactDialog, { document: document }, React.createElement('h1', {}, 'I am a dialog!')),
+          React.createElement(ReactDialog, { document: document, open: true, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
           document.getElementById('app')
         );
 
@@ -18,7 +25,6 @@ describe('close ReactDialog', () => {
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
         
         cy.get('body').trigger('keydown', { key: "Escape", code: "Escape", which: 27 });
-        cy.wait(1500);
         
         cy.get('.ReactDialog.ReactDialogOpen').should('not.exist');
         cy.get('h1').should('not.exist');
@@ -31,8 +37,12 @@ describe('close ReactDialog', () => {
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
+        let closeDialog = function(){
+          return false;
+        }
+
         ReactDOM.render(
-          React.createElement(ReactDialog, { document: document, closable: false }, React.createElement('h1', {}, 'I am a dialog!')),
+          React.createElement(ReactDialog, { document: document, open: true, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
           document.getElementById('app')
         );
 
@@ -40,7 +50,6 @@ describe('close ReactDialog', () => {
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
         
         cy.get('body').trigger('keydown', { key: "Escape", code: "Escape", which: 27 });
-        cy.wait(1500);
 
         cy.get('h1').should('exist');
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
@@ -53,8 +62,15 @@ describe('close ReactDialog', () => {
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
+        let closeDialog = function(){
+          ReactDOM.render(
+            React.createElement(ReactDialog, { document: document, open: false, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
+            document.getElementById('app')
+          );
+        }
+
         ReactDOM.render(
-          React.createElement(ReactDialog, { document: document }, React.createElement('h1', {}, 'I am a dialog!')),
+          React.createElement(ReactDialog, { document: document, open: true, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
           document.getElementById('app')
         );
 
@@ -62,7 +78,6 @@ describe('close ReactDialog', () => {
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
         
         cy.get('.ReactDialogBackground').trigger('click');
-        cy.wait(1500);
         
         cy.get('.ReactDialog.ReactDialogOpen').should('not.exist');
         cy.get('h1').should('not.exist');
@@ -75,8 +90,12 @@ describe('close ReactDialog', () => {
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
+        let closeDialog = function(){
+          return false;
+        }
+
         ReactDOM.render(
-          React.createElement(ReactDialog, { document: document, closable: false }, React.createElement('h1', {}, 'I am a dialog!')),
+          React.createElement(ReactDialog, { document: document, open: true, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
           document.getElementById('app')
         );
 
@@ -84,7 +103,6 @@ describe('close ReactDialog', () => {
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
         
         cy.get('.ReactDialogBackground').trigger('click');
-        cy.wait(1500);
 
         cy.get('h1').should('exist');
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
@@ -97,8 +115,15 @@ describe('close ReactDialog', () => {
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
+        let closeDialog = function(){
+          ReactDOM.render(
+            React.createElement(ReactDialog, { document: document, open: false, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
+            document.getElementById('app')
+          );
+        }
+
         ReactDOM.render(
-          React.createElement(ReactDialog, { document: document, closable: false }, React.createElement('h1', {}, 'I am a dialog!')),
+          React.createElement(ReactDialog, { document: document, open: true, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
           document.getElementById('app')
         );
 
@@ -106,7 +131,6 @@ describe('close ReactDialog', () => {
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
         
         cy.get('.ReactDialogInner').trigger('click');
-        cy.wait(1500);
 
         cy.get('h1').should('exist');
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');

@@ -1,7 +1,7 @@
 {
   "name": "depay-react-dialog",
   "moduleName": "ReactDialog",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "description": "A basic dialog component for react.",
   "main": "./dist/cjs/index.js",
   "files": [
