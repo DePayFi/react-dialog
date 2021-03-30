@@ -39,8 +39,9 @@ import { ReactDialog } from 'depay-react-dialog'
 render() {
   return(
     ...
-    <ReactDialog>
+    <ReactDialog close={this.close} open={this.showDialog}>
       <h1>I am a dialog</h1>
+      <button onclick={this.close}>Close Dialog</button>
     </ReactDialog>
   )
 }
