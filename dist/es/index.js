@@ -52,7 +52,7 @@ const renderStyle = function (styles) {
 
     .ReactDialog.ReactDialogOpen .ReactDialogInner {
       opacity: 1.0;
-      top: -15vh;
+      top: -5vh;
     }
   `
   )
