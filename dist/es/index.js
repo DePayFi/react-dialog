@@ -35,7 +35,7 @@ const renderStyle = function (styles) {
       position: absolute;
       right: 0;
       top: 0;
-      transition: all 0.4s ease;
+      transition: opacity 0.4s ease;
       width: 100vw;
     }
 
@@ -47,7 +47,7 @@ const renderStyle = function (styles) {
       opacity: 0;
       position: relative;
       top: -17vh;
-      transition: all 0.4s ease;
+      transition: opacity 0.4s ease, top 0.4s ease;
     }
 
     .ReactDialog.ReactDialogOpen .ReactDialogInner {
