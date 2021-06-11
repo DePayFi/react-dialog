@@ -1,3 +1,5 @@
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-dom')) :
   typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-dom'], factory) :
@@ -9,26 +11,36 @@
   var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
   var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
-  const _jsxFileName = "/Users/sebastian/Work/DePay/depay-react-dialog/src/components/Dialog.jsx";
-
-
-  const renderStyle = function (styles) {
+  function ReactDialogStyle(styles) {
     let background =
       typeof styles === 'object' && styles.background ? styles.background : 'rgba(0,0,0,0.4)';
 
     return (
       `
     .ReactDialog {
-      align-items: center;
       bottom: 0;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
+      display: table;
+      height: 100%;
       left: 0;
       position: absolute;
       right: 0;
       top: 0;
-      width: 100vw;
+      user-select: none;
+      width: 100%;
+    }
+
+    .ReactDialogRow {
+      display: table-row;
+      height: 100%;
+      width: 100%;
+    }
+
+    .ReactDialogCell {
+      display: table-cell;
+      height: 100%;
+      vertical-align: middle;
+      width: 100%;
+      text-align: center;
     }
 
     .ReactDialogBackground {
@@ -52,6 +64,7 @@
     }
 
     .ReactDialogInner {
+      display: inline-block;
       opacity: 0;
       position: relative;
       top: -17vh;
@@ -64,7 +77,10 @@
     }
   `
     )
-  };
+  }
+
+  const _jsxFileName = "/Users/sebastian/Work/DePay/depay-react-dialog/src/components/Dialog.jsx";
+
 
   class Dialog extends React__default['default'].Component {
     constructor(props) {
@@ -112,12 +128,16 @@
 
     render() {
       const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
-      const style = renderStyle({ background: this.props.background });
+      const style = ReactDialogStyle({ background: this.props.background });
       return (
-        React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 107}}
-          , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 108}}, style)
-          , React__default['default'].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 109}} )
-          , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 110}}, this.props.children)
+        React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 54}}
+          , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 55}}, style)
+          , React__default['default'].createElement('div', { className: "ReactDialogRow", __self: this, __source: {fileName: _jsxFileName, lineNumber: 56}}
+            , React__default['default'].createElement('div', { className: "ReactDialogCell", __self: this, __source: {fileName: _jsxFileName, lineNumber: 57}}
+              , React__default['default'].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 58}} )
+              , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 59}}, this.props.children)
+            )
+          )
         )
       )
     }

@@ -1,60 +1,7 @@
 import React from 'react'
+import ReactDialogStyle from '../styles/ReactDialogStyle'
 import ReactDOM from 'react-dom'
 import { useEffect } from 'react'
-
-const renderStyle = function (styles) {
-  let background =
-    typeof styles === 'object' && styles.background ? styles.background : 'rgba(0,0,0,0.4)'
-
-  return (
-    `
-    .ReactDialog {
-      align-items: center;
-      bottom: 0;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 100vw;
-    }
-
-    .ReactDialogBackground {
-      background: ` +
-    background +
-    `;
-      bottom: 0;
-      display: block;
-      height: 100vh;
-      left: 0;
-      opacity: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      transition: opacity 0.4s ease;
-      width: 100vw;
-    }
-
-    .ReactDialog.ReactDialogOpen .ReactDialogBackground {
-      opacity: 1;
-    }
-
-    .ReactDialogInner {
-      opacity: 0;
-      position: relative;
-      top: -17vh;
-      transition: opacity 0.4s ease, top 0.4s ease;
-    }
-
-    .ReactDialog.ReactDialogOpen .ReactDialogInner {
-      opacity: 1.0;
-      top: -5vh;
-    }
-  `
-  )
-}
 
 class Dialog extends React.Component {
   constructor(props) {
@@ -102,12 +49,16 @@ class Dialog extends React.Component {
 
   render() {
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : '']
-    const style = renderStyle({ background: this.props.background })
+    const style = ReactDialogStyle({ background: this.props.background })
     return (
       <div className={classNames.join(' ')}>
         <style>{style}</style>
-        <div className="ReactDialogBackground" onClick={this.onClickBackground.bind(this)} />
-        <div className="ReactDialogInner">{this.props.children}</div>
+        <div className="ReactDialogRow">
+          <div className="ReactDialogCell">
+            <div className="ReactDialogBackground" onClick={this.onClickBackground.bind(this)} />
+            <div className="ReactDialogInner">{this.props.children}</div>
+          </div>
+        </div>
       </div>
     )
   }

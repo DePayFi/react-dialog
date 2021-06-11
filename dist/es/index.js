@@ -1,26 +1,38 @@
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const _jsxFileName = "/Users/sebastian/Work/DePay/depay-react-dialog/src/components/Dialog.jsx";
-
-
-const renderStyle = function (styles) {
+function ReactDialogStyle(styles) {
   let background =
     typeof styles === 'object' && styles.background ? styles.background : 'rgba(0,0,0,0.4)';
 
   return (
     `
     .ReactDialog {
-      align-items: center;
       bottom: 0;
-      display: flex;
-      height: 100vh;
-      justify-content: center;
+      display: table;
+      height: 100%;
       left: 0;
       position: absolute;
       right: 0;
       top: 0;
-      width: 100vw;
+      user-select: none;
+      width: 100%;
+    }
+
+    .ReactDialogRow {
+      display: table-row;
+      height: 100%;
+      width: 100%;
+    }
+
+    .ReactDialogCell {
+      display: table-cell;
+      height: 100%;
+      vertical-align: middle;
+      width: 100%;
+      text-align: center;
     }
 
     .ReactDialogBackground {
@@ -44,6 +56,7 @@ const renderStyle = function (styles) {
     }
 
     .ReactDialogInner {
+      display: inline-block;
       opacity: 0;
       position: relative;
       top: -17vh;
@@ -56,7 +69,10 @@ const renderStyle = function (styles) {
     }
   `
   )
-};
+}
+
+const _jsxFileName = "/Users/sebastian/Work/DePay/depay-react-dialog/src/components/Dialog.jsx";
+
 
 class Dialog extends React.Component {
   constructor(props) {
@@ -104,12 +120,16 @@ class Dialog extends React.Component {
 
   render() {
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
-    const style = renderStyle({ background: this.props.background });
+    const style = ReactDialogStyle({ background: this.props.background });
     return (
-      React.createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 107}}
-        , React.createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 108}}, style)
-        , React.createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 109}} )
-        , React.createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 110}}, this.props.children)
+      React.createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 54}}
+        , React.createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 55}}, style)
+        , React.createElement('div', { className: "ReactDialogRow", __self: this, __source: {fileName: _jsxFileName, lineNumber: 56}}
+          , React.createElement('div', { className: "ReactDialogCell", __self: this, __source: {fileName: _jsxFileName, lineNumber: 57}}
+            , React.createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 58}} )
+            , React.createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 59}}, this.props.children)
+          )
+        )
       )
     )
   }
