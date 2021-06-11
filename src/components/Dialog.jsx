@@ -56,7 +56,7 @@ class Dialog extends React.Component {
         <div className="ReactDialogRow">
           <div className="ReactDialogCell">
             <div className="ReactDialogBackground" onClick={this.onClickBackground.bind(this)} />
-            <div className="ReactDialogInner">{this.props.children}</div>
+            {this.props.children}
           </div>
         </div>
       </div>

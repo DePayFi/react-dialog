@@ -24,8 +24,10 @@ import { ReactDialog } from 'depay-react-dialog'
   /*...*/
 
   <ReactDialog close={this.close} open={this.state.showDialog}>
-    <h1>I am a dialog</h1>
-    <button onclick={this.close}>Close Dialog</button>
+    <div className="ReactDialogAnimation MyDialogStyle">
+      <h1>I am a dialog</h1>
+      <button onclick={this.close}>Close Dialog</button>
+    </div>
   </ReactDialog>
 ```
 
@@ -40,12 +42,16 @@ render() {
   return(
     ...
     <ReactDialog close={this.close} open={this.state.showDialog}>
-      <h1>I am a dialog</h1>
-      <button onclick={this.close}>Close Dialog</button>
+      <div className="ReactDialogAnimation MyDialogStyle">
+        <h1>I am a dialog</h1>
+        <button onclick={this.close}>Close Dialog</button>
+      </div>
     </ReactDialog>
   )
 }
 ```
+
+Please apply the `ReactDialogAnimation` class to the child element that you want to be animated as part of the dialog opening animation.
 
 #### Props
 

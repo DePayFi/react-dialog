@@ -50,15 +50,15 @@ export default function (styles) {
       opacity: 1;
     }
 
-    .ReactDialogInner {
+    .ReactDialogAnimation {
       display: inline-block;
-      opacity: 0;
       position: relative;
+      opacity: 0;
       top: -17vh;
       transition: opacity 0.4s ease, top 0.4s ease;
     }
 
-    .ReactDialog.ReactDialogOpen .ReactDialogInner {
+    .ReactDialog.ReactDialogOpen .ReactDialogAnimation {
       opacity: 1.0;
       top: -5vh;
     }

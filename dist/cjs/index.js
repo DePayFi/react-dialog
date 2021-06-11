@@ -12,7 +12,7 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
-function ReactDialogStyle(styles) {
+function ReactDialogStyle (styles) {
   let background =
     typeof styles === 'object' && styles.background ? styles.background : 'rgba(0,0,0,0.4)';
 
@@ -64,15 +64,15 @@ function ReactDialogStyle(styles) {
       opacity: 1;
     }
 
-    .ReactDialogInner {
+    .ReactDialogAnimation {
       display: inline-block;
-      opacity: 0;
       position: relative;
+      opacity: 0;
       top: -17vh;
       transition: opacity 0.4s ease, top 0.4s ease;
     }
 
-    .ReactDialog.ReactDialogOpen .ReactDialogInner {
+    .ReactDialog.ReactDialogOpen .ReactDialogAnimation {
       opacity: 1.0;
       top: -5vh;
     }
@@ -136,7 +136,7 @@ class Dialog extends React__default['default'].Component {
         , React__default['default'].createElement('div', { className: "ReactDialogRow", __self: this, __source: {fileName: _jsxFileName, lineNumber: 56}}
           , React__default['default'].createElement('div', { className: "ReactDialogCell", __self: this, __source: {fileName: _jsxFileName, lineNumber: 57}}
             , React__default['default'].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 58}} )
-            , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 59}}, this.props.children)
+            , this.props.children
           )
         )
       )

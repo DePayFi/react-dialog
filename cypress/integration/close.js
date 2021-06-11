@@ -115,22 +115,32 @@ describe('close ReactDialog', () => {
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
 
-        let closeDialog = function(){
+        let updateDialog = function(open){
           ReactDOM.render(
-            React.createElement(ReactDialog, { document: document, open: false, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
+            React.createElement(
+              ReactDialog,
+              { document: document, open: open, close: ()=>updateDialog(false) },
+              React.createElement(
+                'div',
+                { 
+                  className: 'ReactDialogInner',
+                  style: {
+                    position: 'relative'
+                  }
+                },
+                React.createElement('h1', {}, 'I am a dialog!')
+              )
+            ),
             document.getElementById('app')
           );
         }
 
-        ReactDOM.render(
-          React.createElement(ReactDialog, { document: document, open: true, close: closeDialog }, React.createElement('h1', {}, 'I am a dialog!')),
-          document.getElementById('app')
-        );
+        updateDialog(true);
 
         cy.get('h1').should('exist');
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
         
-        cy.get('.ReactDialogInner').trigger('click');
+        cy.get('.ReactDialogCell .ReactDialogInner').trigger('click');
 
         cy.get('h1').should('exist');
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
