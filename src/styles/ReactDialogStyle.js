@@ -6,9 +6,10 @@ export default function (styles) {
     `
     .ReactDialog {
       bottom: 0;
-      display: table;
+      display: table-row-group;
       height: 100%;
       left: 0;
+      overflow: hidden;
       position: absolute;
       right: 0;
       top: 0;
