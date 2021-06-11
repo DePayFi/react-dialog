@@ -1,4 +1,4 @@
-export default function(styles) {
+export default function (styles) {
   let background =
     typeof styles === 'object' && styles.background ? styles.background : 'rgba(0,0,0,0.4)'
 
