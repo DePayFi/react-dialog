@@ -34,7 +34,7 @@ class ReactDialog extends React.Component {
         >
           {this.props.children}
         </Dialog>,
-        container
+        container,
       )
     } else {
       // enforces unmount
