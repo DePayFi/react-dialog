@@ -23,6 +23,7 @@ class ReactDialog extends React.Component {
 
   render() {
     let _document = this.props.document || document
+    let container = this.props.container || _document.body
     if (this.state.open) {
       return ReactDOM.createPortal(
         <Dialog
@@ -33,7 +34,7 @@ class ReactDialog extends React.Component {
         >
           {this.props.children}
         </Dialog>,
-        _document.body,
+        container
       )
     } else {
       // enforces unmount

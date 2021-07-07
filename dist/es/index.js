@@ -1,3 +1,5 @@
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -156,17 +158,18 @@ class ReactDialog extends React.Component {
 
   render() {
     let _document = this.props.document || document;
+    let container = this.props.container || _document.body;
     if (this.state.open) {
       return ReactDOM.createPortal(
         React.createElement(Dialog, {
           background: this.props.background,
           close: this.props.close,
           document: _document,
-          open: this.props.open, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 28}}
+          open: this.props.open, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 29}}
         
           , this.props.children
         ),
-        _document.body,
+        container
       )
     } else {
       // enforces unmount

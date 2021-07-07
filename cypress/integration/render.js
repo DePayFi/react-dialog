@@ -21,6 +21,27 @@ describe('render ReactDialog', () => {
     })
   })
 
+  it('allows to provide an explicit container where the dialog lives in', () => {
+  
+    cy.visit('cypress/test.html').then((contentWindow) => {
+      cy.document().then((document) => {
+
+        ReactDOM.render(
+          React.createElement(
+            ReactDialog, 
+            { document: document, container: document.getElementById('app'), open: true },
+            React.createElement('h1', {}, 'I am a dialog!')
+          ),
+          document.getElementById('app')
+        );
+
+        expect(
+          document.querySelector('h1').innerHTML
+        ).to.equal('I am a dialog!')
+      })
+    })
+  })
+
   it('renders only 1 dialog at a time (removes the previous one)', () => {
 
     cy.visit('cypress/test.html').then((contentWindow) => {

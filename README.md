@@ -80,11 +80,21 @@ Please apply the `ReactDialogAnimation` class to the child element that you want
   </ReactDialog>
 ```
 
-`document (Document)`: Allows to forward a different document where the dialog is supposed to live in (created through ReactDOM portal).
+`document (Document)`: Allows to forward a different document where the dialog is supposed to live in.
 
 ```javascript
 
   <ReactDialog document={someIframe.document}>
+    <h1>I am a dialog</h1>
+    <button onclick={this.close}>Close Dialog</button>
+  </ReactDialog>
+```
+
+`container (HTMLElement)`: Allows to provide a explicit container where the dialog is supposed to be rendered into.
+
+```javascript
+
+  <ReactDialog container={document.getElementById('app')}>
     <h1>I am a dialog</h1>
     <button onclick={this.close}>Close Dialog</button>
   </ReactDialog>
