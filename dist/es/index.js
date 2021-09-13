@@ -9,7 +9,7 @@ function ReactDialogStyle (styles) {
     `
     .ReactDialog {
       bottom: 0;
-      display: table-row-group;
+      display: table;
       height: 100%;
       left: 0;
       overflow: hidden;
