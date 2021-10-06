@@ -35,19 +35,17 @@ function ReactDialogStyle (styles) {
     }
 
     .ReactDialogBackground {
-      background: ` +
-    background +
-    `;
+      background: ${background};
       bottom: 0;
       display: block;
-      height: 100vh;
+      height: 100%;
       left: 0;
       opacity: 0;
-      position: absolute;
+      position: fixed;
       right: 0;
       top: 0;
       transition: opacity 0.4s ease;
-      width: 100vw;
+      width: 100%;
     }
 
     .ReactDialog.ReactDialogOpen .ReactDialogBackground {
