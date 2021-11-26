@@ -5,8 +5,7 @@ function ReactDialogStyle (styles) {
   let background =
     typeof styles === 'object' && styles.background ? styles.background : 'rgba(0,0,0,0.4)';
 
-  return (
-    `
+  return `
     .ReactDialog {
       bottom: 0;
       display: table;
@@ -65,10 +64,9 @@ function ReactDialogStyle (styles) {
       top: -5vh;
     }
   `
-  )
 }
 
-const _jsxFileName = "/Users/sebastian/Work/DePay/depay-react-dialog/src/components/Dialog.jsx";
+const _jsxFileName = "/Users/sebastian/Work/DePay/react-dialog/src/components/Dialog.jsx";
 class Dialog extends React.Component {
   constructor(props) {
     super(props);
@@ -130,7 +128,7 @@ class Dialog extends React.Component {
   }
 }
 
-const _jsxFileName$1 = "/Users/sebastian/Work/DePay/depay-react-dialog/src/index.jsx";
+const _jsxFileName$1 = "/Users/sebastian/Work/DePay/react-dialog/src/index.jsx";
 class ReactDialog extends React.Component {
   constructor(props) {
     super(props);

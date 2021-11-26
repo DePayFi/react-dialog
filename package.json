@@ -1,7 +1,7 @@
 {
   "name": "@depay/react-dialog",
   "moduleName": "ReactDialog",
-  "version": "11.0.0",
+  "version": "11.0.1",
   "description": "A basic dialog component for react.",
   "main": "./dist/cjs/index.js",
   "files": [
@@ -28,9 +28,7 @@
   },
   "homepage": "https://github.com/DePayFi/react-dialog#readme",
   "private": false,
-  "dependencies": {
-    "react-dom": "^17.0.1"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^17",
     "react-dom": "^17"
@@ -58,8 +56,9 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.2.1",
-    "react": "^17.0.1",
-    "react-test-renderer": "^17.0.1",
+    "react": "^17",
+    "react-dom": "^17",
+    "react-test-renderer": "^17",
     "react-testing-library": "^8.0.1",
     "rollup": "^2.34.2",
     "rollup-plugin-livereload": "^2.0.0",
