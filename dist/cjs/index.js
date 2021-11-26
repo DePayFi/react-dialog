@@ -78,8 +78,6 @@ function ReactDialogStyle (styles) {
 }
 
 const _jsxFileName = "/Users/sebastian/Work/DePay/depay-react-dialog/src/components/Dialog.jsx";
-
-
 class Dialog extends React__default['default'].Component {
   constructor(props) {
     super(props);

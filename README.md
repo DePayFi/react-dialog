@@ -1,17 +1,17 @@
 ## Quickstart
 
 ```
-yarn add depay-react-dialog
+yarn add @depay/react-dialog
 ```
 
 or 
 
 ```
-npm install --save depay-react-dialog
+npm install --save @depay/react-dialog
 ```
 
 ```javascript
-import { ReactDialog } from 'depay-react-dialog'
+import { ReactDialog } from '@depay/react-dialog'
 
   /*...*/
 
@@ -36,7 +36,7 @@ import { ReactDialog } from 'depay-react-dialog'
 ### Render
 
 ```javascript
-import { ReactDialog } from 'depay-react-dialog'
+import { ReactDialog } from '@depay/react-dialog'
 
 render() {
   return(
