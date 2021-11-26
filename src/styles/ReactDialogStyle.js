@@ -2,8 +2,7 @@ export default function (styles) {
   let background =
     typeof styles === 'object' && styles.background ? styles.background : 'rgba(0,0,0,0.4)'
 
-  return (
-    `
+  return `
     .ReactDialog {
       bottom: 0;
       display: table;
@@ -62,5 +61,4 @@ export default function (styles) {
       top: -5vh;
     }
   `
-  )
 }
