@@ -7,6 +7,8 @@ class Dialog extends React.Component {
   constructor(props) {
     super(props)
 
+    this.handler = this.onKeyDown.bind(this)
+
     this.state = {
       open: true,
     }
@@ -40,11 +42,11 @@ class Dialog extends React.Component {
         this.setState({ open: true })
       }, 10)
     })
-    this.props.document.addEventListener('keydown', this.onKeyDown.bind(this), false)
+    this.props.document.addEventListener('keydown', this.handler, true)
   }
 
   componentWillUnmount() {
-    this.props.document.addEventListener('keydown', this.onKeyDown.bind(this), false)
+    this.props.document.removeEventListener('keydown', this.handler, true)
   }
 
   render() {

@@ -1,3 +1,4 @@
+import globals from './rollup.globals.js'
 import livereload from 'rollup-plugin-livereload'
 import pkg from './package.json'
 import rollup from './rollup.module.config.js'
@@ -18,7 +19,7 @@ export default Object.assign({}, rollup, {
       openPage: '/dev.html'
     }),
     livereload({
-      watch: ['dist', 'src']
+      watch: ['dist']
     })
   ]
 })
