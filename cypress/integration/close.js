@@ -110,7 +110,7 @@ describe('close ReactDialog', () => {
     })
   })
 
-  it('does not close when set user clicks within the inner dialog content', () => {
+  it('does not close when set user clicks the dialog content', () => {
   
     cy.visit('cypress/test.html').then((contentWindow) => {
       cy.document().then((document) => {
@@ -123,7 +123,7 @@ describe('close ReactDialog', () => {
               React.createElement(
                 'div',
                 { 
-                  className: 'ReactDialogInner',
+                  className: 'ReactDialogContent',
                   style: {
                     position: 'relative'
                   }
@@ -140,7 +140,7 @@ describe('close ReactDialog', () => {
         cy.get('h1').should('exist');
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');
         
-        cy.get('.ReactDialogCell .ReactDialogInner').trigger('click');
+        cy.get('.ReactDialogContent').trigger('click');
 
         cy.get('h1').should('exist');
         cy.get('.ReactDialog.ReactDialogOpen').should('exist');

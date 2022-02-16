@@ -15,6 +15,7 @@
     "prepublishOnly": "yarn build",
     "dev": "rollup -c rollup.dev.config.js -w",
     "test:integration": "yarn cypress run",
+    "test:cypress:debug": "yarn cypress run --headed --no-exit",
     "test": "yarn test:integration"
   },
   "repository": "git@github.com:DePayFi/react-dialog.git",

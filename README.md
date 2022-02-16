@@ -113,6 +113,22 @@ yarn install
 yarn start
 ```
 
+### Testing
+
+#### Debug Cypress
+
+Starts cypress in `--headed` and `--no-exit`
+
+```
+test:cypress:debug
+```
+
+Test and debug single cypress file:
+
+```
+yarn test:cypress:debug --spec "cypress/integration/close.js"
+```
+
 ### Release
 
 ```
