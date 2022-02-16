@@ -31,6 +31,10 @@ import { ReactDialog } from '@depay/react-dialog'
   </ReactDialog>
 ```
 
+## Demo
+
+https://depayfi.github.io/react-dialog/dev.html
+
 ## Functionalities
 
 ### Render

@@ -5,29 +5,22 @@ export default function (styles) {
   return `
     .ReactDialog {
       bottom: 0;
-      display: table;
+      display: flex;
       height: 100%;
       left: 0;
+      min-height: 100%;
       overflow: hidden;
-      position: absolute;
+      position: fixed;
       right: 0;
       top: 0;
-      user-select: none;
       width: 100%;
     }
 
-    .ReactDialogRow {
-      display: table-row;
-      height: 100%;
-      width: 100%;
-    }
-
-    .ReactDialogCell {
-      display: table-cell;
-      height: 100%;
-      vertical-align: middle;
-      width: 100%;
-      text-align: center;
+    .ReactDialogInner {
+      align-items: center;
+      display: flex;
+      flex: 1;
+      justify-content: center;
     }
 
     .ReactDialogBackground {
