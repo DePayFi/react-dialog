@@ -7,13 +7,16 @@ export default function (styles) {
       bottom: 0;
       display: flex;
       height: 100%;
+      height: 100vh;
       left: 0;
       min-height: 100%;
+      min-height: 100vh;
       overflow: hidden;
       position: fixed;
       right: 0;
       top: 0;
       width: 100%;
+      width: 100vw;
     }
 
     .ReactDialogInner {
