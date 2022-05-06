@@ -2,7 +2,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-dom')) :
   typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-dom'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ReactDialog = {}, global.React, global.ReactDOM));
-}(this, (function (exports, React, ReactDOM) { 'use strict';
+})(this, (function (exports, React, ReactDOM) { 'use strict';
 
   function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -70,8 +70,8 @@
   `
   }
 
-  const _jsxFileName = "/Users/sebastian/Work/DePay/react-dialog/src/components/Dialog.jsx";
-  class Dialog extends React__default['default'].Component {
+  const _jsxFileName$1 = "/Users/sebastian/Work/DePay/react-dialog/src/components/Dialog.jsx";
+  class Dialog extends React__default["default"].Component {
     constructor(props) {
       super(props);
 
@@ -121,10 +121,10 @@
       const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
       const style = ReactDialogStyle({ background: this.props.background });
       return (
-        React__default['default'].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName, lineNumber: 56}}
-          , React__default['default'].createElement('style', {__self: this, __source: {fileName: _jsxFileName, lineNumber: 57}}, style)
-          , React__default['default'].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName, lineNumber: 58}}
-            , React__default['default'].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName, lineNumber: 59}} )
+        React__default["default"].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 55}}
+          , React__default["default"].createElement('style', {__self: this, __source: {fileName: _jsxFileName$1, lineNumber: 56}}, style)
+          , React__default["default"].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 57}}
+            , React__default["default"].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 58}} )
             , this.props.children
           )
         )
@@ -132,8 +132,8 @@
     }
   }
 
-  const _jsxFileName$1 = "/Users/sebastian/Work/DePay/react-dialog/src/index.jsx";
-  class ReactDialog extends React__default['default'].Component {
+  const _jsxFileName = "/Users/sebastian/Work/DePay/react-dialog/src/index.jsx";
+  class ReactDialog extends React__default["default"].Component {
     constructor(props) {
       super(props);
 
@@ -156,12 +156,12 @@
       let _document = this.props.document || document;
       let container = this.props.container || _document.body;
       if (this.state.open) {
-        return ReactDOM__default['default'].createPortal(
-          React__default['default'].createElement(Dialog, {
+        return ReactDOM__default["default"].createPortal(
+          React__default["default"].createElement(Dialog, {
             background: this.props.background,
             close: this.props.close,
             document: _document,
-            open: this.props.open, __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 29}}
+            open: this.props.open, __self: this, __source: {fileName: _jsxFileName, lineNumber: 29}}
           
             , this.props.children
           ),
@@ -178,4 +178,4 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));

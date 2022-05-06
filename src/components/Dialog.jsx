@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDialogStyle from '../styles/ReactDialogStyle'
 import ReactDOM from 'react-dom'
-import { useEffect } from 'react'
 
 class Dialog extends React.Component {
   constructor(props) {
