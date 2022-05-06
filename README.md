@@ -33,7 +33,7 @@ import { ReactDialog } from '@depay/react-dialog'
 
 ## Demo
 
-https://depayfi.github.io/react-dialog/dev.html
+https://depayfi.github.io/react-dialog/demo.html
 
 ## Functionalities
 
