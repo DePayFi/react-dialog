@@ -158,6 +158,7 @@
       if (this.state.open) {
         return ReactDOM__default["default"].createPortal(
           React__default["default"].createElement(Dialog, {
+            key: this.props.key,
             background: this.props.background,
             close: this.props.close,
             document: _document,

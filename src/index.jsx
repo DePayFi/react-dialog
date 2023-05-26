@@ -27,6 +27,7 @@ class ReactDialog extends React.Component {
     if (this.state.open) {
       return ReactDOM.createPortal(
         <Dialog
+          key={this.props.key}
           background={this.props.background}
           close={this.props.close}
           document={_document}
