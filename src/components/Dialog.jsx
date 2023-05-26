@@ -52,7 +52,7 @@ class Dialog extends React.Component {
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : '']
     const style = ReactDialogStyle({ background: this.props.background })
     return (
-      <div className={classNames.join(' ')}>
+      <div key={this.props.dialogKey} className={classNames.join(' ')}>
         <style>{style}</style>
         <div className="ReactDialogInner">
           <div className="ReactDialogBackground" onClick={this.onClickBackground.bind(this)} />

@@ -1,5 +1,5 @@
 
-(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react'), require('react-dom')) :
   typeof define === 'function' && define.amd ? define(['exports', 'react', 'react-dom'], factory) :
@@ -123,7 +123,7 @@
       const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
       const style = ReactDialogStyle({ background: this.props.background });
       return (
-        React__default["default"].createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 55}}
+        React__default["default"].createElement('div', { key:  this.props.dialogKey , className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 55}}
           , React__default["default"].createElement('style', {__self: this, __source: {fileName: _jsxFileName$1, lineNumber: 56}}, style)
           , React__default["default"].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 57}}
             , React__default["default"].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 58}} )
@@ -141,6 +141,7 @@
 
       this.state = {
         open: props.open,
+        dialogKey: new Date().getTime()
       };
     }
 
@@ -160,10 +161,11 @@
       if (this.state.open) {
         return ReactDOM__default["default"].createPortal(
           React__default["default"].createElement(Dialog, {
+            dialogKey: this.props.dialogKey || this.state.dialogKey,
             background: this.props.background,
             close: this.props.close,
             document: _document,
-            open: this.props.open, __self: this, __source: {fileName: _jsxFileName, lineNumber: 29}}
+            open: this.props.open, __self: this, __source: {fileName: _jsxFileName, lineNumber: 30}}
           
             , this.props.children
           ),

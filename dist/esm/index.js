@@ -113,7 +113,7 @@ class Dialog extends React.Component {
     const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
     const style = ReactDialogStyle({ background: this.props.background });
     return (
-      React.createElement('div', { className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 55}}
+      React.createElement('div', { key: this.props.dialogKey, className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 55}}
         , React.createElement('style', {__self: this, __source: {fileName: _jsxFileName$1, lineNumber: 56}}, style)
         , React.createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 57}}
           , React.createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 58}} )
@@ -131,6 +131,7 @@ class ReactDialog extends React.Component {
 
     this.state = {
       open: props.open,
+      dialogKey: new Date().getTime(),
     };
   }
 
@@ -150,11 +151,11 @@ class ReactDialog extends React.Component {
     if (this.state.open) {
       return ReactDOM.createPortal(
         React.createElement(Dialog, {
-          key: this.props.key,
+          dialogKey: this.props.dialogKey || this.state.dialogKey,
           background: this.props.background,
           close: this.props.close,
           document: _document,
-          open: this.props.open, __self: this, __source: {fileName: _jsxFileName, lineNumber: 29}}
+          open: this.props.open, __self: this, __source: {fileName: _jsxFileName, lineNumber: 30}}
         
           , this.props.children
         ),

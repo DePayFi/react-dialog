@@ -8,6 +8,7 @@ class ReactDialog extends React.Component {
 
     this.state = {
       open: props.open,
+      dialogKey: new Date().getTime(),
     }
   }
 
@@ -27,7 +28,7 @@ class ReactDialog extends React.Component {
     if (this.state.open) {
       return ReactDOM.createPortal(
         <Dialog
-          key={this.props.key}
+          dialogKey={this.props.dialogKey || this.state.dialogKey}
           background={this.props.background}
           close={this.props.close}
           document={_document}
