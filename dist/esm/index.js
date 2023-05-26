@@ -131,7 +131,6 @@ class ReactDialog extends React.Component {
 
     this.state = {
       open: props.open,
-      dialogKey: new Date().getTime(),
     };
   }
 
@@ -151,11 +150,10 @@ class ReactDialog extends React.Component {
     if (this.state.open) {
       return ReactDOM.createPortal(
         React.createElement(Dialog, {
-          dialogKey: this.props.dialogKey || this.state.dialogKey,
           background: this.props.background,
           close: this.props.close,
           document: _document,
-          open: this.props.open, __self: this, __source: {fileName: _jsxFileName, lineNumber: 30}}
+          open: this.props.open, __self: this, __source: {fileName: _jsxFileName, lineNumber: 29}}
         
           , this.props.children
         ),

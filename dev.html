@@ -49,12 +49,13 @@
                   let root
                   var renderDialog = function(open) {
                     if (typeof root == 'undefined') { root = ReactDOM.createRoot(document.getElementById('dialog')) }
+                    const time = new Date().getTime()
                     root.render(
                       React.createElement(
                         window.ReactDialog.ReactDialog,
                         { close: closeDialog, open: open, background: 'rgba(230,230,230,0.8)' },
                         React.createElement('div', { style: { background: 'white', padding: '10px' }, className: 'ReactDialogAnimation' }, 
-                          React.createElement('h1', {}, 'I am a dialog!')
+                          React.createElement('h1', {}, `I am a dialog! ${ time }`)
                         )
                       )
                     )
