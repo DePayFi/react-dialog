@@ -103,17 +103,17 @@
     }
 
     componentDidMount() {
-      this.setState({ open: false }, () => {
-        if(this.props.animate === false) {
-          this.setState({ open: true });
-        } else {
-          // make sure state is false first before opening the dialog
-          // to ensure opening is animated
+      if(this.props.animate === false) {
+        this.setState({ open: true });
+      } else {
+        // make sure state is false first before opening the dialog
+        // to ensure opening is animated
+        this.setState({ open: false }, () => {
           setTimeout(() => {
             this.setState({ open: true });
           }, 10);
-        }
-      });
+        });
+      }
       this.props.document.addEventListener('keydown', this.handler, true);
     }
 
