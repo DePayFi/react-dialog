@@ -31,6 +31,7 @@ class ReactDialog extends React.Component {
           close={this.props.close}
           document={_document}
           open={this.props.open}
+          animate={this.props.animate}
         >
           {this.props.children}
         </Dialog>,

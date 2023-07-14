@@ -35,11 +35,15 @@ class Dialog extends React.Component {
 
   componentDidMount() {
     this.setState({ open: false }, () => {
-      // make sure state is false first before opening the dialog
-      // to ensure opening is animated
-      setTimeout(() => {
+      if(this.props.animate === false) {
         this.setState({ open: true })
-      }, 10)
+      } else {
+        // make sure state is false first before opening the dialog
+        // to ensure opening is animated
+        setTimeout(() => {
+          this.setState({ open: true })
+        }, 10)
+      }
     })
     this.props.document.addEventListener('keydown', this.handler, true)
   }

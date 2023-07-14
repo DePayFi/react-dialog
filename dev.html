@@ -44,16 +44,17 @@
                 </div>
               </div>
               <div class="px-4 pt-3">
-                <button class='btn btn-primary' onClick='openDialog()'>Try it</button>
+                <button class='btn btn-primary' onClick='openDialog(true)'>Try it</button>
+                <button class='btn btn-primary' onClick='openDialog(false)'>Try it (without animation)</button>
                 <script>
                   let root
-                  var renderDialog = function(open) {
+                  var renderDialog = function(open, animate) {
                     if (typeof root == 'undefined') { root = ReactDOM.createRoot(document.getElementById('dialog')) }
                     const time = new Date().getTime()
                     root.render(
                       React.createElement(
                         window.ReactDialog.ReactDialog,
-                        { close: closeDialog, open: open, background: 'rgba(230,230,230,0.8)' },
+                        { close: closeDialog, open: open, animate, background: 'rgba(230,230,230,0.8)' },
                         React.createElement('div', { style: { background: 'white', padding: '10px' }, className: 'ReactDialogAnimation' }, 
                           React.createElement('h1', {}, `I am a dialog! ${ time }`)
                         )
@@ -61,12 +62,12 @@
                     )
                   }
 
-                  window.closeDialog = function(){
-                    renderDialog(false);
+                  window.closeDialog = function(animate = true){
+                    renderDialog(false, animate);
                   }
 
-                  window.openDialog = function(){
-                    renderDialog(true);
+                  window.openDialog = function(animate = true){
+                    renderDialog(true, animate);
                   }
 
                 </script>

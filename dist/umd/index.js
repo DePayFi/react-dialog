@@ -104,11 +104,15 @@
 
     componentDidMount() {
       this.setState({ open: false }, () => {
-        // make sure state is false first before opening the dialog
-        // to ensure opening is animated
-        setTimeout(() => {
+        if(this.props.animate === false) {
           this.setState({ open: true });
-        }, 10);
+        } else {
+          // make sure state is false first before opening the dialog
+          // to ensure opening is animated
+          setTimeout(() => {
+            this.setState({ open: true });
+          }, 10);
+        }
       });
       this.props.document.addEventListener('keydown', this.handler, true);
     }
@@ -121,10 +125,10 @@
       const classNames = ['ReactDialog', this.state.open ? 'ReactDialogOpen' : ''];
       const style = ReactDialogStyle({ background: this.props.background });
       return (
-        React__default["default"].createElement('div', { key: this.props.dialogKey, className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 55}}
-          , React__default["default"].createElement('style', {__self: this, __source: {fileName: _jsxFileName$1, lineNumber: 56}}, style)
-          , React__default["default"].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 57}}
-            , React__default["default"].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 58}} )
+        React__default["default"].createElement('div', { key: this.props.dialogKey, className: classNames.join(' '), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 59}}
+          , React__default["default"].createElement('style', {__self: this, __source: {fileName: _jsxFileName$1, lineNumber: 60}}, style)
+          , React__default["default"].createElement('div', { className: "ReactDialogInner", __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 61}}
+            , React__default["default"].createElement('div', { className: "ReactDialogBackground", onClick: this.onClickBackground.bind(this), __self: this, __source: {fileName: _jsxFileName$1, lineNumber: 62}} )
             , this.props.children
           )
         )
@@ -161,7 +165,8 @@
             background: this.props.background,
             close: this.props.close,
             document: _document,
-            open: this.props.open, __self: this, __source: {fileName: _jsxFileName, lineNumber: 29}}
+            open: this.props.open,
+            animate: this.props.animate, __self: this, __source: {fileName: _jsxFileName, lineNumber: 29}}
           
             , this.props.children
           ),
