@@ -5,9 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="https://depay.com/favicon.png"/>
     <title>Development</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="dist/umd/index.js"></script>
+    
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@19?dev",
+          "react-dom": "https://esm.sh/react-dom@19?dev",
+          "react-dom/client": "https://esm.sh/react-dom@19/client?dev"
+        }
+      }
+    </script>
+    
+    <script type="module">
+      import React from "react";
+      window.React = React;
+      import ReactDOM from "react-dom";
+      window.ReactDOM = ReactDOM;
+      import { createRoot } from "react-dom/client";
+      window.createRoot = createRoot;
+      import { ReactDialog } from "./dist/index.js";
+      window.ReactDialog = ReactDialog;
+    </script>
+
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5/dist/css/bootstrap.css">
     <style>
       .btn-primary {
@@ -44,28 +63,30 @@
                 </div>
               </div>
               <div class="px-4 pt-3">
-                <button class='btn btn-primary' onClick='openDialog()'>Try it</button>
+                <button class='btn btn-primary' onClick='openDialog(true)'>Try it</button>
+                <button class='btn btn-primary' onClick='openDialog(false)'>Try it (without animation)</button>
                 <script>
                   let root
-                  var renderDialog = function(open) {
-                    if (typeof root == 'undefined') { root = ReactDOM.createRoot(document.getElementById('dialog')) }
+                  var renderDialog = function(open, animate) {
+                    if (typeof root == 'undefined') { root = createRoot(document.getElementById('dialog')) }
+                    const time = new Date().getTime()
                     root.render(
                       React.createElement(
-                        window.ReactDialog.ReactDialog,
-                        { close: closeDialog, open: open, background: 'rgba(230,230,230,0.8)' },
+                        ReactDialog,
+                        { close: closeDialog, open: open, animate, background: 'rgba(230,230,230,0.8)' },
                         React.createElement('div', { style: { background: 'white', padding: '10px' }, className: 'ReactDialogAnimation' }, 
-                          React.createElement('h1', {}, 'I am a dialog!')
+                          React.createElement('h1', {}, `I am a dialog! ${ time }`)
                         )
                       )
                     )
                   }
 
-                  window.closeDialog = function(){
-                    renderDialog(false);
+                  window.closeDialog = function(animate = true){
+                    renderDialog(false, animate);
                   }
 
-                  window.openDialog = function(){
-                    renderDialog(true);
+                  window.openDialog = function(animate = true){
+                    renderDialog(true, animate);
                   }
 
                 </script>

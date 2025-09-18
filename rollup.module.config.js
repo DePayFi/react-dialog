@@ -12,14 +12,8 @@ export default {
     {
       format: 'es',
       globals: globals,
-      file: 'dist/esm/index.js'
-    },
-    {
-      format: 'umd',
-      name: pkg.moduleName,
-      globals: globals,
-      file: 'dist/umd/index.js'
-    },
+      file: 'dist/index.js'
+    }
   ],
   external: [
     ...Object.keys(pkg.dependencies || {}),

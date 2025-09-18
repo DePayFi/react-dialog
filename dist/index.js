@@ -95,7 +95,7 @@ class Dialog extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.animate === false) {
+    if (this.props.animate === false) {
       this.setState({ open: true });
     } else {
       // make sure state is false first before opening the dialog
