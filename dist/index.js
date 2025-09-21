@@ -159,7 +159,7 @@ class ReactDialog extends React.Component {
           document: _document,
           open: this.props.open,
           animate: this.props.animate, __self: this, __source: {fileName: _jsxFileName, lineNumber: 29}}
-        
+
           , this.props.children
         ),
         container,

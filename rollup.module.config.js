@@ -1,10 +1,12 @@
 import commonjs from '@rollup/plugin-commonjs'
 import globals from './rollup.globals.js'
-import pkg from './package.json'
 import replace from '@rollup/plugin-replace'
 import resolve from '@rollup/plugin-node-resolve'
 import sucrase from '@rollup/plugin-sucrase'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
+import { readFileSync } from 'node:fs'
+
+const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url)))
 
 export default {
   input: 'src/index.jsx',
